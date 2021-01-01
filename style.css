@@ -1,0 +1,14 @@
+#resbox {
+    background-color: cadetblue;
+    text-align: center;
+    font-size: 25px;
+}
+.but {
+    margin: 5%;
+    height: 100px;
+    width: 100px;
+}
+.btn-section{
+    margin: auto;
+    padding-left: 24%;
+}
