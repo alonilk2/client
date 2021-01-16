@@ -22,9 +22,7 @@ const signin = (email, password) => async (dispatch) => {
     }
 }
 const signup = (email, password, firstname, lastname) => async (dispatch) => {
-    /*dispatch({type: USER_SIGNIN_ATTEMPT, payload: {
-        }
-    });*/
+    dispatch({type: USER_SIGNUP_ATTEMPT, payload: {}});
     try{
         const user = await Axios.post("/signup",{
             "email": email,
@@ -32,12 +30,10 @@ const signup = (email, password, firstname, lastname) => async (dispatch) => {
             "firstname": firstname,
             "lastname": lastname
         });
-        console.log(user);
-        //dispatch({type: USER_SIGNIN_SUCCESS, payload: user});
+        dispatch({type: USER_SIGNUP_SUCCESS, payload: user});
     }
     catch (err) {
-        console.log(err);
-        dispatch({type: USER_SIGNIN_FAILED, payload: err});
+        dispatch({type: USER_SIGNUP_FAILED, payload: err});
     }
 }
 /*const getavatar = (email) => async (dispatch) => {
