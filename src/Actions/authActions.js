@@ -9,7 +9,7 @@ const signin = (email, password) => async (dispatch) => {
         }
     });*/
     try{
-        const user = await Axios.post("http://localhost:3001/signin",{
+        const user = await Axios.post("/signin",{
             "email": email,
             "password": password
         });
@@ -21,7 +21,25 @@ const signin = (email, password) => async (dispatch) => {
         dispatch({type: USER_SIGNIN_FAILED, payload: err});
     }
 }
-
+const signup = (email, password, firstname, lastname) => async (dispatch) => {
+    /*dispatch({type: USER_SIGNIN_ATTEMPT, payload: {
+        }
+    });*/
+    try{
+        const user = await Axios.post("/signup",{
+            "email": email,
+            "password": password,
+            "firstname": firstname,
+            "lastname": lastname
+        });
+        console.log(user);
+        //dispatch({type: USER_SIGNIN_SUCCESS, payload: user});
+    }
+    catch (err) {
+        console.log(err);
+        dispatch({type: USER_SIGNIN_FAILED, payload: err});
+    }
+}
 /*const getavatar = (email) => async (dispatch) => {
     try{
         const img = await Axios.post('http://localhost:3001/load-avatar', email);
@@ -50,4 +68,4 @@ const signout = () => (dispatch) => {
 }*/
 
 
-export {signin};
+export {signin, signup};

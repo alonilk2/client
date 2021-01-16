@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import '../css/stylessign.css'
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import NavBar from '../Components/Navbar';
 import UpdatePasswordComponent from '../Components/updatePssworscomponent';
-class UpdatePassView extends Component {
-	render() {
+
+class UpdatePassView extends Component 
+{
+    render() {
 		return (
 			<div>
 				<NavBar />
@@ -13,5 +14,4 @@ class UpdatePassView extends Component {
 		)
 	}
 }
-
 export default UpdatePassView;

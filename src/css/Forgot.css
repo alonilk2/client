@@ -5,7 +5,7 @@ body {
     display: block;
 }
 
-#SignUpcontainer col-xs-6 col-md-4{
+#ForgotContainer col-xs-6 col-md-4{
     display: flex;
     font-family: Calibri;
     width: 100%;
@@ -16,32 +16,23 @@ body {
     margin-top: 10%;
 }
 
-#SignUp 
-{
+#Forgot {
     text-align: center;
     height: auto;
     width: auto;
     background-color: white;
     padding: 25px;
     position: fixed;
-    top: 25%;
+    top: 35%;
     box-shadow: 0px 0px 10px 0px #000;
     border-radius: 25px;
     overflow: auto;
 }
 
-#title 
-{
+#title {
     font-family: Calibri;
     font-size: 25px;
     color: #0f0761;
-}
-
-#Firstname, #Lastname, #email, #password, #password1 
-{
-    height: 6%;
-	margin: 5px 0% 5px 0%;
-	border-radius: 25px;
 }
 
 button 

@@ -5,7 +5,8 @@ body {
     display: block;
 }
 
-#SignUpcontainer col-xs-6 col-md-4{
+#SignIncontainer col-xs-6 col-md-4
+{
     display: flex;
     font-family: Calibri;
     width: 100%;
@@ -16,7 +17,7 @@ body {
     margin-top: 10%;
 }
 
-#SignUp 
+#SignIn 
 {
     text-align: center;
     height: auto;
@@ -30,18 +31,11 @@ body {
     overflow: auto;
 }
 
-#title 
+#title
 {
     font-family: Calibri;
     font-size: 25px;
     color: #0f0761;
-}
-
-#Firstname, #Lastname, #email, #password, #password1 
-{
-    height: 6%;
-	margin: 5px 0% 5px 0%;
-	border-radius: 25px;
 }
 
 button 
@@ -57,4 +51,16 @@ button
     width: 70%;
     margin: auto;
     border-radius: 25px;
+}
+
+#email, #password 
+{
+	height: 50px;
+	margin: 5% 0% 5% 0%;
+	border-radius: 25px;
+}
+
+.SignInForm 
+{
+	padding-top: 20%;
 }

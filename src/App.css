@@ -1,24 +1,24 @@
-.App {
-  text-align: center;
+.App 
+{
+    text-align: center;
 }
 
-
-.App-link {
-  color: #61dafb;
+.App-link 
+{
+    color: #61dafb;
 }
 
-.navbar-brand {
-  font-size: 30px;
+.navbar-brand 
+{
+    font-size: 30px;
 }
 
-.active {
-  margin: 0px 5px;
+.active 
+{
+    margin: 0px 5px;
 }
-.row {
-  margin: 0 0;
+
+.row 
+{
+    margin: 0 0;
 }
-/* {
-  background: #000 !important;
-  color: #0f0 !important;
-  outline: solid #f00 1px !important;
-}*/

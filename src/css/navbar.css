@@ -1,23 +1,29 @@
-.nav-link {
+.nav-link 
+{
     border-style: none;
     background-color: white;
 }
 
-.navbar-light {
+.navbar-light 
+{
     background-color: white;
 }
 
-.navbar-parent{
+.navbar-parent
+{
 	max-height: 10vh;
 }
 
-.navbar-brand {
+.navbar-brand
+{
 	display: flex;
 	align-items: flex-start;
  	max-width: 10%;
 }
-.logoc{
+
+.logoc
+{
 	height: auto;
 	width: 100%;
- 	margin-left: 5%;
+    margin-left: 5%;
 }

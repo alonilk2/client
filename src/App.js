@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
-import Hp from './Views/HomePage';
+import Hp from './Views/HomePageView';
 
-class App extends Component {
-
-  render () {
-    return (    
-      <div className="App">
-        <Hp />
-
-      </div>
-    );
-  }
+class App extends Component 
+{
+    render () {
+        return (    
+            <div className="App">
+                <Hp />
+            </div>
+        );
+    }
 }
-
 export default App;
