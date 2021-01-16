@@ -87,7 +87,7 @@ function SignUpComponent(props)
             <div id="SignUpcontainer">
                 <div className= "row justify-content-center">
                     <div id="SignUp">
-                        <form className="SignUpform" action="#" method="post" autocomplete="off">
+                        <form className="SignUpform" autocomplete="off">
                             <p id="title">Sign Up</p>
                             <input id="Firstname" type="text" className="form-control fix-rounded-right" required onChange={(e)=>setFirstName(e.target.value)} placeholder="Enter Firstname" aria-label="Fullname" aria-describedby="basic-addon1"></input>
                             <div className="invalid-feedback">
