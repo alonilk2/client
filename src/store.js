@@ -1,8 +1,17 @@
 import {combineReducers, createStore, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
 import {authReducer} from './Reducers/authReducer';
-var initialState = {};
-
+import Cookie from 'js-cookie';
+const user = Cookie.getJSON('userInstance')|| null;
+var initialState = 0;
+if(user){
+    initialState = {
+        user: user,
+        loggedin: true
+    }
+} else {
+    initialState = {}
+}
 const Red = combineReducers({
     user : authReducer
 });

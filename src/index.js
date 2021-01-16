@@ -3,8 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {Router, Route} from 'react-router-dom';
-import history from './history';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
 import {Provider} from 'react-redux';
 import store from './store';
 import SignIn from './Views/SignInView';
@@ -17,17 +21,32 @@ import ConstractionView from './Views/ConstractionView';
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>      
-            <Router history={history}>
-                <div>
-                    <Route exact path="/" component={App}></Route>
-                    <Route path="/Signin" component={SignIn}></Route>
-                    <Route path="/SignUp" component={SignUp}></Route>
-                    <Route path="/UpdatePass" component={UpdatePassView}></Route> 
-                    <Route path="/ForgotPass" component={ForgotPasswordView}></Route>
-                    <Route path="/About" component={AboutView}></Route>
-                    <Route path="/Constraction" component={ConstractionView}></Route>
-                </div>
+            <Router>
+                <Switch>
+                    <Route path="/SignIn">
+                        <SignIn />
+                    </Route>
+                    <Route path="/Signup">
+                        <SignUp />
+                    </Route>
+                    <Route path="/Updatepass">
+                        <UpdatePassView />
+                    </Route>
+                    <Route path="/Forgotpass">
+                        <ForgotPasswordView />
+                    </Route>
+                    <Route path="/About">
+                        <AboutView />
+                    </Route>
+                    <Route path="/Constraction">
+                        <ConstractionView />
+                    </Route>
+                    <Route path="/">
+                        <App />
+                    </Route>
+                </Switch>
             </Router>
+
         </Provider>
     </React.StrictMode>,
     document.getElementById('root')

@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import history from '../history';
 import {useDispatch, useSelector} from 'react-redux';
 import '../css/SignUp.css'
 import ReCAPTCHA from "react-google-recaptcha";
 import {signup} from '../Actions/authActions';
+import { useHistory } from "react-router-dom";
 function SignUpComponent(props) 
 {
     const [Email, setEmail] = useState('');
@@ -11,21 +11,24 @@ function SignUpComponent(props)
     const [password1, setPassword1] = useState('');
     const [Firstname, setFirstName] = useState('');
     const [Lastname, setLastName] = useState('');
+    const userInstance = useSelector(state => state.user);
+    const { user, error } = userInstance;
     const recaptchaRef = React.createRef();
     const dispatch = useDispatch();
-
-    function onClickSignUp() 
-    {
-		if(ValidateEmail(Email) && checkPwd(password) && checkNames(Firstname) && checkNames(Lastname)){
-            if(password == password1){
+    let history = useHistory();
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if(ValidateEmail(Email) && checkPwd(password) && checkNames(Firstname) && checkNames(Lastname)){
+            if(password === password1){
                 dispatch(signup(Email, password, Firstname, Lastname));
+                history.push("/");
             }
             else {
                 alert("The passwords do not match");
-		        return (false);
+                return (false);
             }
         }
-	}
+    }
 
     function ValidateEmail(mail) 
     {
@@ -41,11 +44,11 @@ function SignUpComponent(props)
             return false;
         }
 
-		else if (str.search(/\d/) == -1){
+		else if (str.search(/\d/) === -1){
 			alert("No num");
             return false;
         }
-		else if (str.search(/[a-zA-Z]/) == -1){
+		else if (str.search(/[a-zA-Z]/) === -1){
 			alert("no chars");
             return false;
         }
@@ -59,12 +62,12 @@ function SignUpComponent(props)
             return false;
         }
 
-		else if (str.search(/[a-zA-Z]/) == -1){
+		else if (str.search(/[a-zA-Z]/) === -1){
 			alert("no chars");
             return false;
         }
 
-		else if (str.search(/[0-9]/) != -1) {
+		else if (str.search(/[0-9]/) !== -1) {
 			alert("you cannot write number at your name");
             return false;
         }
@@ -87,7 +90,7 @@ function SignUpComponent(props)
             <div id="SignUpcontainer">
                 <div className= "row justify-content-center">
                     <div id="SignUp">
-                        <form className="SignUpform" autocomplete="off">
+                        <form onSubmit={handleSubmit}>
                             <p id="title">Sign Up</p>
                             <input id="Firstname" type="text" className="form-control fix-rounded-right" required onChange={(e)=>setFirstName(e.target.value)} placeholder="Enter Firstname" aria-label="Fullname" aria-describedby="basic-addon1"></input>
                             <div className="invalid-feedback">
@@ -110,7 +113,7 @@ function SignUpComponent(props)
                                 Please enter your password.
                             </div>
                             <div className="row">
-                                <button className="Signup-btn" type="submit" onClick={onClickSignUp}>Signup</button>
+                                <button className="Signup-btn" type="submit">Signup</button>
                             </div>
                             <div className="row">
                                 <div className="need-acc-txt"> Have an account? <a href="/signin">Sign-In</a> </div>

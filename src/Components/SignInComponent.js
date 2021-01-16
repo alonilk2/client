@@ -1,20 +1,20 @@
 import React, {useEffect, useState} from 'react';
-import history from '../history';
 import {useDispatch, useSelector} from 'react-redux';
 import {signin} from '../Actions/authActions';
 import '../css/SignIn.css';
 import ReCAPTCHA from "react-google-recaptcha";
-
+import { useHistory } from "react-router-dom";
 function SignInComponent(props) 
 {
     const [Email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
     const recaptchaRef = React.createRef();
-    
-    function onSubmit() 
-    {
+    let history = useHistory();
+    const handleSubmit = (event) => {
+        event.preventDefault();
         dispatch(signin(Email, password));
+        history.push("/");
     }
 
     function onChange(value) {
@@ -26,14 +26,11 @@ function SignInComponent(props)
             <div id="SignIncontainer">
                 <div className= "row justify-content-center">
                     <div id="SignIn">
-                        <form className="SignInForm" autocomplete="off">
+                        <form onSubmit={handleSubmit}>
                             <p id="title">Sign In To Your Account</p>
                             <div className="email-field">
                                 <input id="email" type="text" className="form-control fix-rounded-right" required 
-                                    onChange = 
-                                    {
-                                        (e) => setEmail(e.target.value)
-                                    }
+                                    onChange = {(e) => setEmail(e.target.value)}
                                     placeholder="user name or email" aria-label="user name or email" aria-describedby="basic-addon1">
                                 </input>
                                 <div className="invalid-feedback">
@@ -41,7 +38,10 @@ function SignInComponent(props)
                                 </div>
                             </div>
                             <div className="password-field">
-                                <input id="password" type="password" className="form-control fix-rounded-right"     required placeholder="password:" aria-label="password:" onChange={(e) => setPassword(e.target.value)} aria-describedby="basic-addon2"></input>
+                                <input id="password" type="password" className="form-control fix-rounded-right" required placeholder="password:" aria-label="password:"
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    aria-describedby="basic-addon2">
+                                </input>
                                 <div className="invalid-feedback">
                                     Please enter your password.
                                 </div>
@@ -50,7 +50,7 @@ function SignInComponent(props)
                                 <a id="forgot" href="/ResetPass">Forgot password?</a>
                             </div>
                             <div className="row">
-                                <button className="SignInButton" type="submit" onClick={onSubmit}>Login</button>
+                                <button className="SignInButton" type="submit" href="/">Login</button>
                             </div>
                             <div className="row">
                                 <div className="need-acc-txt"> 
