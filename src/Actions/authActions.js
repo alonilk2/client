@@ -13,9 +13,17 @@ function signin(email, password) {
             password: password
         })
         .then(function(response) { 
-            dispatch({type: USER_SIGNIN_SUCCESS, payload: response});
-            Cookie.set('userInstance', JSON.stringify(response));
-            history.push('/');
+            if(response.data.success){
+                dispatch({type: USER_SIGNIN_SUCCESS, payload: response});
+                Cookie.set('userInstance', JSON.stringify(response));
+                history.push('/');
+            }
+            else {
+                if(response.data.error === 0)
+                    dispatch({type: USER_SIGNIN_FAILED, payload: 0});
+                else if(response.data.error === 1)
+                    dispatch({type: USER_SIGNIN_FAILED, payload: 1});
+            }
         })
         .catch(function(error) {
             dispatch({type: USER_SIGNIN_FAILED, payload: error});
@@ -34,9 +42,17 @@ const signup = (email, password, firstname, lastname) => async (dispatch) => {
             "firstname": firstname,
             "lastname": lastname
         });
-        dispatch({type: USER_SIGNUP_SUCCESS, payload: user});
-        Cookie.set('userInstance', JSON.stringify(user));
-        history.push('/');
+        if(user.data.success){
+            dispatch({type: USER_SIGNUP_SUCCESS, payload: user});
+            Cookie.set('userInstance', JSON.stringify(user));
+            history.push('/');
+        }
+        else {
+            if(user.data.error === 0)
+                dispatch({type: USER_SIGNUP_FAILED, payload: 0});
+            else if(user.data.error === 1)
+                dispatch({type: USER_SIGNUP_FAILED, payload: 1});
+        }
     }
     catch (err) {
         dispatch({type: USER_SIGNUP_FAILED, payload: err});

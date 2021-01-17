@@ -4,11 +4,13 @@ import {signin} from '../Actions/authActions';
 import '../css/SignIn.css';
 import ReCAPTCHA from "react-google-recaptcha";
 import { useHistory } from "react-router-dom";
+import Alert from 'react-bootstrap/Alert'
 function SignInComponent(props) 
 {
     const [Email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
+    const errorFromServer = useSelector(state=>state.error);
     const recaptchaRef = React.createRef();
     let history = useHistory();
     const handleSubmit = (event) => {
@@ -26,6 +28,12 @@ function SignInComponent(props)
                 <div className= "row justify-content-center">
                     <div id="SignIn">
                         <form onSubmit={handleSubmit}>
+                            {
+                                errorFromServer === 0 &&
+                                <Alert variant="danger">
+                                    Email and\or password are incorrect!
+                                </Alert>
+                            } 
                             <p id="title">Sign In To Your Account</p>
                             <div className="email-field">
                                 <input id="email" type="text" className="form-control fix-rounded-right" required 
@@ -33,7 +41,7 @@ function SignInComponent(props)
                                     placeholder="user name or email" aria-label="user name or email" aria-describedby="basic-addon1">
                                 </input>
                                 <div className="invalid-feedback">
-                                    Please choose a username.
+                                    Please choose a username. 
                                 </div>
                             </div>
                             <div className="password-field">

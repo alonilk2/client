@@ -17,7 +17,7 @@ function ProfileNavComp(props)
             <Dropdown className="user-instance">
                 <img className="avatar" src={avatar} alt="profile picture"></img>
                 <Dropdown.Toggle id="dropdown-basic">
-                    Hello {user.first_name}
+                    Hello {user.data.user.first_name}
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
