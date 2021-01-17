@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {Router, Route, Switch, Redirect} from 'react-router-dom';
+import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import {Provider} from 'react-redux';
 import store from './store';
 import SignIn from './Views/SignInView';
@@ -13,7 +13,6 @@ import ForgotPasswordView from './Views/ForgotPasswordView';
 import AboutView from './Views/AboutView';
 import ConstractionView from './Views/ConstractionView';
 import {history} from './history';
-
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>  

@@ -3,9 +3,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import {signin} from '../Actions/authActions';
 import '../css/SignIn.css';
 import ReCAPTCHA from "react-google-recaptcha";
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Alert from 'react-bootstrap/Alert'
-
 function SignInComponent(props) 
 {
     const [Email, setEmail] = useState('');
@@ -14,14 +13,12 @@ function SignInComponent(props)
     const errorFromServer = useSelector(state=>state.error);
     const recaptchaRef = React.createRef();
     let history = useHistory();
-    const handleSubmit = (event) => 
-    {
+    const handleSubmit = (event) => {
         event.preventDefault();
         dispatch(signin(Email, password));
     }
 
-    function onChange(value) 
-    {
+    function onChange(value) {
         console.log("Captcha value:", value);
     }
     
@@ -57,7 +54,7 @@ function SignInComponent(props)
                                 </div>
                             </div>
                             <div className="row">
-                                <a id="forgot" href="/Forgotpass">Forgot password?</a>
+                                <a id="forgot" href="/ResetPass">Forgot password?</a>
                             </div>
                             <div className="row">
                                 <button className="SignInButton" type="submit" href="/">Login</button>
