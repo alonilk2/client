@@ -9,6 +9,7 @@ function authReducer(state = {}, action) {
             }
         }
         case USER_SIGNIN_SUCCESS:{
+            
             return {
                 logging: false,
                 loggedin: true,

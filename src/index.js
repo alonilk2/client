@@ -3,12 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
-
+import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import {Provider} from 'react-redux';
 import store from './store';
 import SignIn from './Views/SignInView';
@@ -17,36 +12,22 @@ import UpdatePassView from './Views/UpdatePassView';
 import ForgotPasswordView from './Views/ForgotPasswordView';
 import AboutView from './Views/AboutView';
 import ConstractionView from './Views/ConstractionView';
-
+import {history} from './history';
 ReactDOM.render(
     <React.StrictMode>
-        <Provider store={store}>      
-            <Router>
+        <Provider store={store}>  
+            <Router history={history}>
                 <Switch>
-                    <Route path="/SignIn">
-                        <SignIn />
-                    </Route>
-                    <Route path="/Signup">
-                        <SignUp />
-                    </Route>
-                    <Route path="/Updatepass">
-                        <UpdatePassView />
-                    </Route>
-                    <Route path="/Forgotpass">
-                        <ForgotPasswordView />
-                    </Route>
-                    <Route path="/About">
-                        <AboutView />
-                    </Route>
-                    <Route path="/Constraction">
-                        <ConstractionView />
-                    </Route>
-                    <Route path="/">
-                        <App />
-                    </Route>
+                    <Route exact path="/" component={App} />
+                    <Route path="/SignIn" component={SignIn} />
+                    <Route path="/Signup" component={SignUp} />                    
+                    <Route path="/Updatepass" component={UpdatePassView} />
+                    <Route path="/Forgotpass" component={ForgotPasswordView} />                    
+                    <Route path="/About" component={AboutView} />
+                    <Route path="/Constraction" component={ConstractionView} />
+                    <Redirect from="*" to="/" />
                 </Switch>
-            </Router>
-
+            </Router>    
         </Provider>
     </React.StrictMode>,
     document.getElementById('root')

@@ -3,23 +3,28 @@ import Cookie from 'js-cookie';
 import { USER_SIGNIN_ATTEMPT, USER_SIGNIN_SUCCESS, USER_SIGNIN_FAILED,
         USER_SIGNUP_ATTEMPT, USER_SIGNUP_SUCCESS, USER_SIGNUP_FAILED,
         USER_SIGNOUT_SUCCESS} from '../Constants/userConst';
-
-const signin = (email, password) => async (dispatch) => {
-    dispatch({type: USER_SIGNIN_ATTEMPT, payload: {}});
-    try{
-        const user = await Axios.post("https://techstar12.herokuapp.com/signin",{
-            "email": email,
-            "password": password
+import { Redirect, Route } from "react-router";
+import { history } from '../history';
+function signin(email, password) {
+    return dispatch => {
+        dispatch({type: USER_SIGNIN_ATTEMPT, payload: {}});
+        Axios.post("https://techstar12.herokuapp.com/signin", {
+            email: email,
+            password: password
+        })
+        .then(function(response) { 
+            dispatch({type: USER_SIGNIN_SUCCESS, payload: response});
+            Cookie.set('userInstance', JSON.stringify(response));
+            history.push('/');
+        })
+        .catch(function(error) {
+            dispatch({type: USER_SIGNIN_FAILED, payload: error});
         });
-        dispatch({type: USER_SIGNIN_SUCCESS, payload: user});
-        const usert = user.data;
-        console.log(usert);
-        Cookie.set('userInstance', JSON.stringify(usert));
-    }
-    catch (err) {
-        dispatch({type: USER_SIGNIN_FAILED, payload: err});
-    }
+    };
+
 }
+
+
 const signup = (email, password, firstname, lastname) => async (dispatch) => {
     dispatch({type: USER_SIGNUP_ATTEMPT, payload: {}});
     try{
@@ -30,8 +35,8 @@ const signup = (email, password, firstname, lastname) => async (dispatch) => {
             "lastname": lastname
         });
         dispatch({type: USER_SIGNUP_SUCCESS, payload: user});
-        const usert = user.data;
-        Cookie.set('userInstance', JSON.stringify(usert));
+        Cookie.set('userInstance', JSON.stringify(user));
+        history.push('/');
     }
     catch (err) {
         dispatch({type: USER_SIGNUP_FAILED, payload: err});

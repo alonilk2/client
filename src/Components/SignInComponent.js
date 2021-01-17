@@ -14,7 +14,6 @@ function SignInComponent(props)
     const handleSubmit = (event) => {
         event.preventDefault();
         dispatch(signin(Email, password));
-        history.push("/");
     }
 
     function onChange(value) {
