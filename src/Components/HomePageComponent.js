@@ -13,7 +13,7 @@ class HomePageComponent extends Component {
     async componentWillMount() {
         this.categoryList = this.categoryList.bind(this);
         try {
-            var catsToList = await Axios.get("https://techstar12.herokuapp.com/fetch_categories"); 
+            var catsToList = await Axios.post("https://techstar12.herokuapp.com/fetch_categories"); 
             console.log(catsToList);
             if(catsToList.data.success){
                 this.setState({categories: catsToList.data.result});

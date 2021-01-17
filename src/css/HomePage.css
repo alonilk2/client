@@ -9,5 +9,5 @@ body {
     display: flex;
 	flex-direction: row;
 	padding-top: 9.5%;
-    padding-left: 15%;
+    justify-content: center;
 }
