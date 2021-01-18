@@ -38,7 +38,7 @@ function ForgotPasswordComponent(props)
                                 </div>
                                 <ReCAPTCHA
                                     ref={recaptchaRef}
-                                    sitekey="6LcZtBoaAAAAAF3eCScaWwdsdv4y6CR_BMoM5i1B"
+                                    sitekey="6Ldn5DEaAAAAALYRhCaGFStvoKGWXRUxuBJVNPrn"
                                     onChange={onChange}
                                 />
                             </form> 

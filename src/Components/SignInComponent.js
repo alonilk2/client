@@ -54,7 +54,7 @@ function SignInComponent(props)
                                 </div>
                             </div>
                             <div className="row">
-                                <a id="forgot" href="/ResetPass">Forgot password?</a>
+                                <a id="forgot" href="/Forgotpass">Forgot password?</a>
                             </div>
                             <div className="row">
                                 <button className="SignInButton" type="submit" href="/">Login</button>
@@ -65,7 +65,7 @@ function SignInComponent(props)
                                 </div>
                             <ReCAPTCHA
                                 ref={recaptchaRef}
-                                sitekey="6LcZtBoaAAAAAF3eCScaWwdsdv4y6CR_BMoM5i1B"
+                                sitekey="6Ldn5DEaAAAAALYRhCaGFStvoKGWXRUxuBJVNPrn"
                                 onChange={onChange}
                             />
                         </form>

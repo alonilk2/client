@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import '../css/SignUp.css'
+import '../css/signup.css'
 import ReCAPTCHA from "react-google-recaptcha";
 import {signup} from '../Actions/authActions';
 import Alert from 'react-bootstrap/Alert'
@@ -125,7 +125,7 @@ function SignUpComponent(props)
                             </div>
                             <ReCAPTCHA
                                 ref={recaptchaRef}
-                                sitekey="6LcZtBoaAAAAAF3eCScaWwdsdv4y6CR_BMoM5i1B"
+                                sitekey="6Ldn5DEaAAAAALYRhCaGFStvoKGWXRUxuBJVNPrn"
                                 onChange={onChange}
                             />
                         </form>
