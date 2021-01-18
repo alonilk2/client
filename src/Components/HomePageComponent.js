@@ -35,7 +35,9 @@ class HomePageComponent extends Component {
     render(){
         return (
             <div className="HomePagecontainer">
-                {this.categoryList()}
+                <div className="row">
+                    {this.categoryList()}
+                </div>
             </div>
         );
     }

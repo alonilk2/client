@@ -11,3 +11,15 @@ body {
 	padding-top: 9.5%;
     justify-content: center;
 }
+
+.card {
+    height: 100%;
+}
+
+.card-img-top {
+    flex:2;
+}
+
+.card-body {
+    flex: none;
+}
