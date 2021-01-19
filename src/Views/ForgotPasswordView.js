@@ -5,7 +5,8 @@ import ForgotPasswordComponent from '../Components/ForgotPasswordComponent';
 
 class ForgotPasswordView extends Component 
 {
-    render() {
+    render() 
+    {
 		return (
 			<div>
 				<NavBar />

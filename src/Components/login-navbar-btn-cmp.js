@@ -14,6 +14,7 @@ class loginnavbarcmp extends Component
         const userInstance = cookie.get('userInstance');
         const dispatch = useDispatch();
         const [imgString, setImage] = useState('');
+        
         if(userInstance) 
         {
             const user = JSON.parse(userInstance);
@@ -40,11 +41,13 @@ class loginnavbarcmp extends Component
         }
         else return (
             <form className="form-inline my-2 my-lg-0">
-                <a href="/Login/login" className="btn btn-primary btn-lg active" role="button" aria-pressed="true">Login</a>
-                <Link to="/Signup" href="#" className="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Sign Up</Link>
+                <a href="/SignIn" className="btn btn-primary btn-lg active" role="button" aria-pressed="true">Sign In</a>
+                <a href="/SignUp" className="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Sign Up</a>
             </form>);
     }
-	render() {
+            
+	render() 
+    {
 		return (
             <div>            
                 <this.isLoggedIn />

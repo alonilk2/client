@@ -4,8 +4,9 @@ import {useDispatch, useSelector} from 'react-redux';
 import '../css/Profile.css'
 import avatar from  '../images/avatar.png';
 import cookie from 'js-cookie';
-import { signout } from '../Actions/authActions';
+import {signout} from '../Actions/authActions';
 import Dropdown from 'react-bootstrap/Dropdown'
+
 function ProfileNavComp(props) 
 {
     const userInstance = cookie.get('userInstance');

@@ -5,7 +5,8 @@ import UpdatePasswordComponent from '../Components/updatePssworscomponent';
 
 class UpdatePassView extends Component 
 {
-    render() {
+    render() 
+    {
 		return (
 			<div>
 				<NavBar />

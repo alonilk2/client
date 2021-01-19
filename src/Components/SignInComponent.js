@@ -3,8 +3,9 @@ import {useDispatch, useSelector} from 'react-redux';
 import {signin} from '../Actions/authActions';
 import '../css/SignIn.css';
 import ReCAPTCHA from "react-google-recaptcha";
-import { useHistory } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import Alert from 'react-bootstrap/Alert'
+
 function SignInComponent(props) 
 {
     const [Email, setEmail] = useState('');
@@ -13,6 +14,7 @@ function SignInComponent(props)
     const errorFromServer = useSelector(state=>state.error);
     const recaptchaRef = React.createRef();
     let history = useHistory();
+    
     const handleSubmit = (event) => {
         event.preventDefault();
         dispatch(signin(Email, password));
@@ -27,7 +29,7 @@ function SignInComponent(props)
             <div id="SignIncontainer">
                 <div className= "row justify-content-center">
                     <div id="SignIn">
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} autocomplete="on">
                             {
                                 errorFromServer === 0 &&
                                 <Alert variant="danger">
@@ -54,14 +56,14 @@ function SignInComponent(props)
                                 </div>
                             </div>
                             <div className="row">
-                                <a id="forgot" href="/Forgotpass">Forgot password?</a>
+                                <a id="forgot" href="/ForgotPass">Forgot password?</a>
                             </div>
                             <div className="row">
-                                <button className="SignInButton" type="submit" href="/">Login</button>
+                                <button className="SignInButton" type="submit" href="/">Sign-In</button>
                             </div>
                             <div className="row">
                                 <div className="need-acc-txt"> 
-                                    Need an account? <a href="/Signup">Sign-Up</a> </div>
+                                    Need an account? <a href="/SignUp">Sign-Up</a> </div>
                                 </div>
                             <ReCAPTCHA
                                 ref={recaptchaRef}

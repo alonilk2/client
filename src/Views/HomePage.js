@@ -1,13 +1,15 @@
 
 import React, {Component} from 'react';
 import '../css/HomePage.css'
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import NavBar from '../Components/Navbar';
 import HomePageComp from '../Components/HomePageComponent';
 
 
-class HomePage extends Component {
-	render() {
+class HomePage extends Component 
+{
+	render() 
+    {
 		return (
 			<div>
 				<NavBar />

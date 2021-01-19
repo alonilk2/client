@@ -10,7 +10,7 @@ class NavBar extends Component
 		return (
             <div className="navbar-parent">
                 <Navbar expand='lg'>
-                    <Navbar.Brand href="#home"><img src={logo} height="" alt="logo" className="d-inline-block align-top logoc"/></Navbar.Brand>
+                    <Navbar.Brand href="/"><img src={logo} height="" alt="logo" className="d-inline-block align-top logoc"/></Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
  			                <Nav className='mr-auto'>

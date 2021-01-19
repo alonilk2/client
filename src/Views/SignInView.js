@@ -5,7 +5,8 @@ import SignIn from '../Components/SignInComponent';
 
 class SignInView extends Component
 {
-    render() {
+    render() 
+    {
         return (
             <div>
                 <NavBar />

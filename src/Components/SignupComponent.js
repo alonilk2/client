@@ -15,6 +15,7 @@ function SignUpComponent(props)
     const recaptchaRef = React.createRef();
     const errorFromServer = useSelector(state=>state.error);
     const dispatch = useDispatch();
+    
     const handleSubmit = (event) => {
         event.preventDefault();
         if(ValidateEmail(Email) && checkPwd(password) && checkNames(Firstname) && checkNames(Lastname)){
@@ -26,17 +27,20 @@ function SignUpComponent(props)
                 return (false);
             }
         }
-    }
+    } 
 
     function ValidateEmail(mail) 
     {
         if (/^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/.test(mail))
             return true;
+        else if (/^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+(?:\.[a-zA-Z0-9-]+)$/.test(mail))
+            return true;
 		alert("You have entered an invalid email address!");
 		return false;
 	}
 
-    function checkPwd(str) {
+    function checkPwd(str) 
+    {
         if (str.length < 6){
 			alert("Too short");
             return false;
@@ -76,13 +80,26 @@ function SignUpComponent(props)
     {
         const recaptchaValue = recaptchaRef.current.getValue();
         this.props.onSubmit(recaptchaValue);
+        document.getElementById("my_captcha_form").addEventListener("submit",function(evt)
+        {
+            var response = ReCAPTCHA.getResponse();
+            if(response.length == 0) 
+            { 
+                //reCaptcha not verified
+                alert("please verify you are humann!"); 
+                evt.preventDefault();
+                return false;
+            }
+            //captcha verified
+            //do the rest of your validations here  
+        });
     }
     
     function onChange(value) 
     {
         console.log("Captcha value:", value);
     }
-  
+    
     return (   
         <div>
             <div id="SignUpcontainer">
@@ -121,12 +138,12 @@ function SignUpComponent(props)
                                 <button className="Signup-btn" type="submit">Signup</button>
                             </div>
                             <div className="row">
-                                <div className="need-acc-txt"> Have an account? <a href="/signin">Sign-In</a> </div>
-                            </div>
+                                <div className="need-acc-txt"> Have an account? <a href="/SignIn">Sign-In</a> </div>
+                            </div> 
                             <ReCAPTCHA
                                 ref={recaptchaRef}
                                 sitekey="6Ldn5DEaAAAAALYRhCaGFStvoKGWXRUxuBJVNPrn"
-                                onChange={onChange}
+                                onChange={onChange} id="my_captcha_form"
                             />
                         </form>
                     </div>

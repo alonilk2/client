@@ -1,6 +1,6 @@
-import React, { useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import history from '../history';
-import { seDispatch, useSelector} from 'react-redux';
+import {seDispatch, useSelector} from 'react-redux';
 import '../css/Forgot.css';
 import ReCAPTCHA from "react-google-recaptcha";
 

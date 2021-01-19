@@ -1,11 +1,13 @@
-body {
+body 
+{
     background: #373B44;  /* fallback for old browsers */
 	background: -webkit-linear-gradient(to right, #4286f4, #373B44);  /* Chrome 10-25, Safari 5.1-6 */
 	background: linear-gradient(to right, #4286f4, #373B44); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     display: block;
 }
 
-#ForgotContainer col-xs-6 col-md-4{
+#ForgotContainer col-xs-6 col-md-4
+{
     display: flex;
     font-family: Calibri;
     width: 100%;
@@ -16,7 +18,8 @@ body {
     margin-top: 10%;
 }
 
-#Forgot {
+#Forgot 
+{
     text-align: center;
     height: auto;
     width: auto;
@@ -29,7 +32,8 @@ body {
     overflow: auto;
 }
 
-#title {
+#title 
+{
     font-family: Calibri;
     font-size: 25px;
     color: #0f0761;
