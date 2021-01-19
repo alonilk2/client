@@ -27,6 +27,7 @@ function SignUpComponent(props)
                 return (false);
             }
         }
+		onSubmit();
     } 
 
     function ValidateEmail(mail) 
