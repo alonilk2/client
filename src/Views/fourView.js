@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import NavBar from '../Components/Navbar';
-import fourComponent from '../Components/fourComponent';
+import ConstComp from '../Components/ConstComp';
 import '../css/Constraction.css'
 
 class fourView extends Component 
@@ -10,7 +10,7 @@ class fourView extends Component
 		return (
 			<div>
 				<NavBar />
-				<fourComponent/>
+				<ConstComp />
 			</div>
 		)
 	}

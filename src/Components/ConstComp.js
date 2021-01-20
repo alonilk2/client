@@ -3,7 +3,7 @@ import history from '../history';
 import {useDispatch, useSelector} from 'react-redux';
 import '../css/Constraction.css'
 
-function fourComponent(props) 
+function ConstComp(props) 
 {
     return (   
         <div>
@@ -11,9 +11,9 @@ function fourComponent(props)
                 <div id="Constractionform">
                     <div className="col login-left-Constraction">
                         <form className="login-form-Constraction" action="#" method="post" autocomplete="off">
-                            <p id="title">This page under constraction. </p>
+                            <p id="title">404 page</p>
                             <div className="constract"> 
-                                Return to <a href="/">Dashboard</a> 
+                                Return to <a href="/">Home Page</a> 
                             </div>
                         </form>
                     </div>
@@ -22,4 +22,4 @@ function fourComponent(props)
         </div> 
     );
 }
-export default fourComponent; 
+export default ConstComp; 

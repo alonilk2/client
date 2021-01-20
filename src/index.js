@@ -13,6 +13,7 @@ import ForgotPasswordView from './Views/ForgotPasswordView';
 import AboutView from './Views/AboutView';
 import ConstractionView from './Views/ConstractionView';
 import fourView from './Views/fourView';
+
 import {history} from './history';
 
 ReactDOM.render(
@@ -27,8 +28,8 @@ ReactDOM.render(
                     <Route path="/ForgotPass" component={ForgotPasswordView} />                    
                     <Route path="/About" component={AboutView} />
                     <Route path="/Constraction" component={ConstractionView} />
-					<Route path="/four" component={fourView} />
-                    <Redirect from="*" to="/four" />
+					<Route path="/404" component={fourView} />
+                    <Redirect from="*" to="/404" />
                 </Switch>
             </Router>    
         </Provider>
