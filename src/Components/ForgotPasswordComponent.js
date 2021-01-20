@@ -1,19 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import history from '../history';
-import {seDispatch, useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import '../css/Forgot.css';
 import ReCAPTCHA from "react-google-recaptcha";
-
+import {sendMail} from '../Actions/authActions';
 function ForgotPasswordComponent(props) 
 {
     const [Email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const recaptchaRef = React.createRef();
-    
-    function onSubmit() 
+    const dispatch = useDispatch(); 
+    function handleSubmit() 
     {
-        const recaptchaValue = recaptchaRef.current.getValue();
-        this.props.onSubmit(recaptchaValue);
+        //const recaptchaValue = recaptchaRef.current.getValue();
+        //this.props.onSubmit(recaptchaValue);
+        dispatch(sendMail(Email, "Reset Password", "Please enter this URL to change password: "));
     }
     
     function onChange(value) 
@@ -27,14 +27,14 @@ function ForgotPasswordComponent(props)
                 <div className= "row justify-content-center">
                     <div id="Forgot">
                         <div className="col login-left">
-                            <form className="ForgotForm" action="#" method="post" autocomplete="off">
+                            <form onSubmit={handleSubmit}>
                                 <p id="title">Reset Password</p>
-                                <input id="email" type="text" className="form-control fix-rounded-right" required placeholder="Enter Email Address" aria-label="email Address" aria-describedby="basic-addon1"></input>
+                                <input id="email" type="text" className="form-control fix-rounded-right" onChange={(e)=>setEmail(e.target.value)} required placeholder="Enter Email Address" aria-label="email Address" aria-describedby="basic-addon1"></input>
                                 <div className="invalid-feedback">
                                     Please choose a username.
                                 </div>
                                 <div className="row">
-                                    <button className="Signup-btn" type="submit" onClick="onClickReset()">Reset Password</button>
+                                    <button className="Signup-btn" type="submit">Reset Password</button>
                                 </div>
                                 <ReCAPTCHA
                                     ref={recaptchaRef}

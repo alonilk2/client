@@ -12,15 +12,11 @@ class HomePageComponent extends Component
         super(props);
         this.state = {categories:[]};
     }
-    
-    async componentWillMount() 
-    {
+    async componentWillMount() {
+        var x;
         this.categoryList = this.categoryList.bind(this);
-        try 
-        {
-            var catsToList = await Axios.post("https://techstar12.herokuapp.com/fetch_categories"); 
-            console.log(catsToList);
-            
+        try {
+            var catsToList  = await Axios.post("https://techstar12.herokuapp.com/fetch_categories"); 
             if(catsToList.data.success)
             {
                 this.setState({categories: catsToList.data.result});

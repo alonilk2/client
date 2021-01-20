@@ -58,15 +58,22 @@ const signup = (email, password, firstname, lastname) => async (dispatch) => {
         dispatch({type: USER_SIGNUP_FAILED, payload: err});
     }
 }
-/*const getavatar = (email) => async (dispatch) => {
+
+const sendMail = (email, subject, text) => async (dispatch) => {
     try{
-        const img = await Axios.post('http://localhost:3001/load-avatar', email);
-        return img; 
-    } catch(err) {
-      console.log(err);
+        const response = await Axios.post("https://techstar12.herokuapp.com/sendMail",{
+            "email": email,
+            "subject": subject,
+            "text": text
+        });
+        if(response.data.error){
+            console.log(response.data.status);
+        }
+    }
+    catch (err) {
+        console.log(err);
     }
 }
-*/
 
 const signout = () => (dispatch) => {
     Cookie.remove('userInstance');
@@ -74,4 +81,4 @@ const signout = () => (dispatch) => {
 }
 
 
-export {signin, signup, signout};
+export {signin, signup, signout, sendMail};

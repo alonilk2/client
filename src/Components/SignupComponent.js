@@ -12,13 +12,17 @@ function SignUpComponent(props)
     const [password1, setPassword1] = useState('');
     const [Firstname, setFirstName] = useState('');
     const [Lastname, setLastName] = useState('');
+    const [callback, setCallback] = useState("not fired");
+    const [value, setValue] = useState("[empty]");
+    const [load, setLoad] = useState(false);
+    const [expired, setExpired] = useState("false");
     const recaptchaRef = React.createRef();
     const errorFromServer = useSelector(state=>state.error);
     const dispatch = useDispatch();
     
     const handleSubmit = (event) => {
         event.preventDefault();
-        if(ValidateEmail(Email) && checkPwd(password) && checkNames(Firstname) && checkNames(Lastname)){
+        if(ValidateEmail(Email) && checkPwd(password) && checkNames(Firstname) && checkNames(Lastname) && value != "[empty]"){
             if(password === password1){
                 dispatch(signup(Email, password, Firstname, Lastname));
             }
@@ -26,6 +30,10 @@ function SignUpComponent(props)
                 alert("The passwords do not match");
                 return (false);
             }
+        }
+        else {
+            alert("You have to verify the Recaptcha !");
+            return (false);
         }
     } 
 
@@ -76,29 +84,11 @@ function SignUpComponent(props)
 		return true;
 	}
 
-    function onSubmit() 
-    {
-        const recaptchaValue = recaptchaRef.current.getValue();
-        this.props.onSubmit(recaptchaValue);
-        document.getElementById("my_captcha_form").addEventListener("submit",function(evt)
-        {
-            var response = ReCAPTCHA.getResponse();
-            if(response.length == 0) 
-            { 
-                //reCaptcha not verified
-                alert("please verify you are humann!"); 
-                evt.preventDefault();
-                return false;
-            }
-            //captcha verified
-            //do the rest of your validations here
-			
-        });
-    }
-    
     function onChange(value) 
     {
         console.log("Captcha value:", value);
+        setValue(value);
+        if(value == null) setExpired(true);
     }
     
     return (   
@@ -144,7 +134,8 @@ function SignUpComponent(props)
                             <ReCAPTCHA
                                 ref={recaptchaRef}
                                 sitekey="6Ldn5DEaAAAAALYRhCaGFStvoKGWXRUxuBJVNPrn"
-                                onChange={onChange} id="my_captcha_form"
+                                onChange={onChange} 
+                                id="my_captcha_form"
                             />
                         </form>
                     </div>

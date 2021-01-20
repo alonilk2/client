@@ -32,7 +32,7 @@ function ProfileNavComp(props)
     else {
         return (
         <form className="form-inline my-2 my-lg-0">
-            <a href="/Signin" className="btn btn-primary btn-lg active" role="button" aria-pressed="true">Login</a>
+            <a href="/Signin" className="btn btn-primary btn-lg active" role="button" aria-pressed="true">Sign In</a>
             <a href="/Signup" className="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Sign Up</a>
         </form>
     );}
