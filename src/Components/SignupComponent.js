@@ -27,7 +27,6 @@ function SignUpComponent(props)
                 return (false);
             }
         }
-		onSubmit();
     } 
 
     function ValidateEmail(mail) 
@@ -92,7 +91,8 @@ function SignUpComponent(props)
                 return false;
             }
             //captcha verified
-            //do the rest of your validations here  
+            //do the rest of your validations here
+			
         });
     }
     
