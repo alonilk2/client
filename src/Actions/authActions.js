@@ -75,10 +75,26 @@ const sendMail = (email, subject, text) => async (dispatch) => {
     }
 }
 
+const updatePass = (email, oldpass, newpass) => async (dispatch) => {
+    try{
+        const response = await Axios.post("https://techstar12.herokuapp.com/updatePass",{
+            "email": email,
+            "oldpass": oldpass,
+            "newpass": newpass
+        });
+        if(response.data.error){
+            console.log(response.data.status);
+        }
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
 const signout = () => (dispatch) => {
     Cookie.remove('userInstance');
     dispatch({type: USER_SIGNOUT_SUCCESS});
 }
 
 
-export {signin, signup, signout, sendMail};
+export {signin, signup, signout, sendMail, updatePass};

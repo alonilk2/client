@@ -5,7 +5,7 @@ import '../css/Profile.css'
 import avatar from  '../images/avatar.png';
 import cookie from 'js-cookie';
 import {signout} from '../Actions/authActions';
-import Dropdown from 'react-bootstrap/Dropdown'
+import Dropdown from 'react-bootstrap/Dropdown';
 
 function ProfileNavComp(props) 
 {

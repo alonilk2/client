@@ -17,6 +17,32 @@ body
     align-items: center;
     margin-top: 10%;
 }
+#UpdatePassword 
+{
+    text-align: center;
+    height: auto;
+    width: 30%;
+    background-color: white;
+    padding: 25px;
+    position: fixed;
+    top: 35%;
+    box-shadow: 0px 0px 10px 0px #000;
+    border-radius: 25px;
+    overflow: auto;
+}
+#title 
+{
+    font-family: Calibri;
+    font-size: 25px;
+    color: #0f0761;
+}
+
+#password, #password1 
+{
+	height: 6%;
+	margin: 5px 0% 5px 0%;
+	border-radius: 25px;
+}
 
 #main-section 
 {
@@ -29,6 +55,8 @@ body
     box-shadow: 0px 0px 10px 0px #000;
     border-radius: 25px;
     overflow: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .content-section {
