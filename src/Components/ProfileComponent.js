@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import '../css/ProfileMain.css';
 import cookie from 'js-cookie';
 import {updatePass} from '../Actions/authActions'
+
 function ProfileComponent(props) 
 {
     const userInstance = cookie.get('userInstance');  
@@ -45,11 +46,11 @@ function ProfileComponent(props)
                             <p className="col subtitle"> {user.data.user.city ? user.data.user.city : "-------"}</p>
                         </div>
                     </div>
+					<h2> Update Password </h2>
                     <div className="updatepass-section">
                         <div className="row">
                             <form className="UpdatePasswordForm" onSubmit={onClickUpdate}>
-                                <p id="title">Update Password</p>
-                                <input id="password" type="password" onChange={(e) => setOldpass(e.target.value)} className="form-control fix-rounded-right" required placeholder="Enter Old Password" aria-label="password:" aria-describedby="basic-addon2"></input>
+                                <input id="password0" type="password" onChange={(e) => setOldpass(e.target.value)} className="form-control fix-rounded-right" required placeholder="Enter Old Password" aria-label="password:" aria-describedby="basic-addon2"></input>
                                 <div className="invalid-feedback">
                                     Please enter your password.
                                 </div>
@@ -61,11 +62,24 @@ function ProfileComponent(props)
                                 <div className="invalid-feedback">
                                     Please enter your password.
                                 </div>
-                                <div className="row">
+								<div className="row">
+									<div className="col subtitle">
+										<div className="row">
+											<p> both Password must match</p>
+										</div>
+										<div className="row">
+											<p>The password must contain at least one number </p>
+										</div>
+										<div className="row">
+											<p> The password must contain at least 6 characters</p>
+										</div>
+									</div>
+								</div>
+	 							<div className="row">
                                     <button className="Signup-btn" type="submit">Update Password</button>
                                 </div>
                             </form>
-                        </div>
+						</div>
                     </div>
                 </div>
             </div> 

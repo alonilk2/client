@@ -17,6 +17,7 @@ body
     align-items: center;
     margin-top: 10%;
 }
+
 #UpdatePassword 
 {
     text-align: center;
@@ -30,6 +31,7 @@ body
     border-radius: 25px;
     overflow: auto;
 }
+
 #title 
 {
     font-family: Calibri;
@@ -37,11 +39,13 @@ body
     color: #0f0761;
 }
 
-#password, #password1 
+#password0, #password, #password1 
 {
-	height: 6%;
-	margin: 5px 0% 5px 0%;
+	height: auto;
+    width: auto;
 	border-radius: 25px;
+	display: flex;
+	justify-content: center;
 }
 
 #main-section 
@@ -51,7 +55,7 @@ body
     width: auto;
     background-color: white;
     padding: 25px;
-    margin: 10vh 10vw 0vw 10vw;
+    margin: 10vh 10vw 10vw 10vw;
     box-shadow: 0px 0px 10px 0px #000;
     border-radius: 25px;
     overflow: auto;
@@ -59,8 +63,40 @@ body
     flex-direction: column;
 }
 
-.content-section {
+.content-section 
+{
     float: left;
     width: 100%;
-    margin: 10% 0% 0% 0%;
+    margin: 3% 0% 3% 0%;
+}
+
+.updatepass-section 
+{
+    float: center;
+    display: flex;
+	justify-content: center;
+	margin: 3% 0% 0% 0%;
+}
+
+.rules
+{
+	float: center;
+	text-align: justify;
+    display: flex;
+	justify-content: center;
+}
+
+button 
+{
+    background-color: #0f0761;
+    color: white;
+	font-size: 25px;
+    font-weight: 400;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+    font-family: Calibri;
+    width: 100%;
+    margin: auto;
+    border-radius: 25px;
 }

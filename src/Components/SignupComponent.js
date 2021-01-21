@@ -22,21 +22,22 @@ function SignUpComponent(props)
     
     const handleSubmit = (event) => {
         event.preventDefault();
-        if(ValidateEmail(Email) && checkPwd(password) && checkNames(Firstname) && checkNames(Lastname) && value != "[empty]"){
-            if(password === password1){
-                dispatch(signup(Email, password, Firstname, Lastname));
-            }
-            else {
-                alert("The passwords do not match");
-                return (false);
-            }
-        }
+        if(ValidateEmail(Email) && checkPwd(password) && checkNames(Firstname) && checkNames(Lastname)){ 
+			//if(value != "[empty]"){
+            	if(password === password1){
+                	dispatch(signup(Email, password, Firstname, Lastname));
+				}
+            	else {
+                	alert("The passwords do not match");
+                	return (false);
+            	}
+        	//}
+		}
         else {
             alert("You have to verify the Recaptcha !");
             return (false);
-        }
-    } 
-
+        } 
+	}
     function ValidateEmail(mail) 
     {
         if (/^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/.test(mail))
