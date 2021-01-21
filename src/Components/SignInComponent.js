@@ -88,7 +88,7 @@ function SignInComponent(props)
                                 </div>
                             </div>
                             <div className="password-field">
-                                <input id="password" type="password" className="form-control fix-rounded-right" required placeholder="password:" aria-label="password:"
+                                <input id="pass" type="password" className="form-control fix-rounded-right" required placeholder="password:" aria-label="password:"
                                     onChange={(e) => setPassword(e.target.value)}
                                     aria-describedby="basic-addon2">
                                 </input>
