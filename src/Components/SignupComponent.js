@@ -20,19 +20,25 @@ function SignUpComponent(props)
     const errorFromServer = useSelector(state=>state.error);
     const dispatch = useDispatch();
     
-    const handleSubmit = (event) => {
+    const handleSubmit = (event) => 
+    {
         event.preventDefault();
-        if(ValidateEmail(Email) && checkPwd(password) && checkNames(Firstname) && checkNames(Lastname)){ 
-			if(value != "[empty]"){
-            	if(password === password1){
+        if(ValidateEmail(Email) && checkPwd(password) && checkNames(Firstname) && checkNames(Lastname))
+        { 
+			if(value != "[empty]")
+            {
+            	if(password === password1)
+                {
                 	dispatch(signup(Email, password, Firstname, Lastname));
 				}
-            	else {
+            	else 
+                {
                 	alert("The passwords do not match");
                 	return (false);
             	}
         	}
-			else {
+			else 
+            {
             	alert("You have to verify the Recaptcha !");
             	return (false);
         	} 
@@ -131,7 +137,8 @@ function SignUpComponent(props)
                                 <button className="Signup-btn" type="submit">Signup</button>
                             </div>
                             <div className="row">
-                                <div className="need-acc-txt"> Have an account? <a href="/SignIn">Sign-In</a> </div>
+                                <div className="need-acc-txt"> Have an account? <a href="/SignIn">Sign-In</a> 
+                            </div>
                             </div> 
                             <ReCAPTCHA
                                 ref={recaptchaRef}

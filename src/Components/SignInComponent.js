@@ -19,7 +19,7 @@ function SignInComponent(props)
     
     const handleSubmit = (event) => {
         event.preventDefault();
-        if(ValidateEmail(Email) && checkPwd(password)&& value != "[empty]"){
+        if(ValidateEmail(Email) && checkPwd(password) && value != "[empty]"){
         dispatch(signin(Email, password));
         }
         else {

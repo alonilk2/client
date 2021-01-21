@@ -20,10 +20,14 @@ function ProfileComponent(props)
                 dispatch(updatePass(user.data.user.email, oldpass, newpass))
             else alert("Both passwords should be identical.");
         }
+        
         return (   
             <div>
                 <div id="main-section">
-                    <h1> My Profile </h1>
+                    <h1>My Profile</h1>
+                    <div className="upDetails">
+                        <a href="/">Edit yous details on</a>
+                    </div>
                     <div className="content-section">
                         <div className="row">
                             <p className="col subtitle"> First name: </p>
@@ -46,40 +50,30 @@ function ProfileComponent(props)
                             <p className="col subtitle"> {user.data.user.city ? user.data.user.city : "-------"}</p>
                         </div>
                     </div>
-					<h2> Update Password </h2>
-                    <div className="updatepass-section">
-                        <div className="row">
-                            <form className="UpdatePasswordForm" onSubmit={onClickUpdate}>
-                                <input id="password0" type="password" onChange={(e) => setOldpass(e.target.value)} className="form-control fix-rounded-right" required placeholder="Enter Old Password" aria-label="password:" aria-describedby="basic-addon2"></input>
-                                <div className="invalid-feedback">
-                                    Please enter your password.
-                                </div>
-                                <input id="password" type="password" onChange={(e) => setNewpass(e.target.value)} className="form-control fix-rounded-right" required placeholder="Enter New Password" aria-label="password:" aria-describedby="basic-addon2"></input>
-                                <div className="invalid-feedback">
-                                    Please enter your password.
-                                </div>
-                                <input id="password1" type="password" onChange={(e) => setNewpass1(e.target.value)} className="form-control fix-rounded-right" required placeholder="Re-enter New Password" aria-label="password:" aria-describedby="basic-addon2"></input>
-                                <div className="invalid-feedback">
-                                    Please enter your password.
-                                </div>
-								<div className="row">
-									<div className="col subtitle">
-										<div className="row">
-											<p> both Password must match</p>
-										</div>
-										<div className="row">
-											<p>The password must contain at least one number </p>
-										</div>
-										<div className="row">
-											<p> The password must contain at least 6 characters</p>
-										</div>
-									</div>
-								</div>
-	 							<div className="row">
-                                    <button className="Signup-btn" type="submit">Update Password</button>
-                                </div>
-                            </form>
+					<h2>Update Password</h2>
+                   <div className="updatepass-section">
+                        <div className="col">
+							<input id="password0" type="password" onChange={(e) => setOldpass(e.target.value)} className="form-control fix-rounded-right" required placeholder="Enter Old Password" aria-label="password:" aria-describedby="basic-addon2"></input>
+							<div className="invalid-feedback">
+								Please enter your password.
+							</div>
+							<input id="password" type="password" onChange={(e) => setNewpass(e.target.value)} className="form-control fix-rounded-right" required placeholder="Enter New Password" aria-label="password:" aria-describedby="basic-addon2"></input>
+							<div className="invalid-feedback">
+								Please enter your password.
+							</div>
+                            <input id="password1" type="password" onChange={(e) => setNewpass1(e.target.value)} className="form-control fix-rounded-right" required placeholder="Re-enter New Password" aria-label="password:" aria-describedby="basic-addon2"></input>
+							<div className="invalid-feedback">
+								Please enter your password.
+							</div>
 						</div>
+						<div className="col">
+                            <p>* Both Password must match</p>
+                            <p>* The password must contain at least one number</p>
+                            <p>* The password must contain at least 6 characters</p>
+						</div>
+					</div>	
+                    <div className="row">
+    				    <button className="Signup-btn" type="submit">Update Password</button>
                     </div>
                 </div>
             </div> 
