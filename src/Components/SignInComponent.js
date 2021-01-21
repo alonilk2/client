@@ -10,6 +10,8 @@ function SignInComponent(props)
 {
     const [Email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [value, setValue] = useState("[empty]");
+    const [expired, setExpired] = useState("false");
     const dispatch = useDispatch();
     const errorFromServer = useSelector(state=>state.error);
     const recaptchaRef = React.createRef();
@@ -17,33 +19,52 @@ function SignInComponent(props)
     
     const handleSubmit = (event) => {
         event.preventDefault();
+        if(ValidateEmail(Email) && checkPwd(password)&& value != "[empty]"){
         dispatch(signin(Email, password));
-		onSubmit();
+        }
+        else {
+        alert("You have to verify the Recaptcha !");
+        return (false);
+        }
     }
-	
-	    function onSubmit() 
+
+
+        function ValidateEmail(mail) 
     {
-        const recaptchaValue = recaptchaRef.current.getValue();
-        this.props.onSubmit(recaptchaValue);
-        document.getElementById("my_captcha_form").addEventListener("submit",function(evt)
-        {
-            var response = ReCAPTCHA.getResponse();
-            if(response.length == 0) 
-            { 
-                //reCaptcha not verified
-                alert("please verify you are humann!"); 
-                evt.preventDefault();
-                return false;
-            }
-            //captcha verified
-            //do the rest of your validations here  
-        });
-    }
+        if (/^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/.test(mail))
+            return true;
+        else if (/^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+(?:\.[a-zA-Z0-9-]+)$/.test(mail))
+            return true;
+		alert("You have entered an invalid email address!");
+		return false;
+	}
+
+    function checkPwd(str) 
+    {
+        if (str.length < 6){
+			alert("Too short");
+            return false;
+        }
+
+		else if (str.search(/\d/) === -1){
+			alert("No num");
+            return false;
+        }
+		else if (str.search(/[a-zA-Z]/) === -1){
+			alert("no chars");
+            return false;
+        }
+		return true;
+	}
+	
+	    
 
     function onChange(value) {
         console.log("Captcha value:", value);
+        setValue(value);
+        if(value == null) setExpired(true);
     }
-    
+
     return (   
         <div>
             <div id="SignIncontainer">
@@ -79,7 +100,7 @@ function SignInComponent(props)
                                 <a id="forgot" href="/ForgotPass">Forgot password?</a>
                             </div>
                             <div className="row">
-                                <button className="SignInButton" type="submit"  href="/">Sign-In</button>
+                                <button className="SignInButton" type="submit">Sign-In</button>
                             </div>
                             <div className="row">
                                 <div className="need-acc-txt"> 

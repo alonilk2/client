@@ -6,20 +6,41 @@ import ReCAPTCHA from "react-google-recaptcha";
 import {sendMail} from '../Actions/authActions';
 function ForgotPasswordComponent(props) 
 {
-    const [Email, setEmail] = useState('');
-    const recaptchaRef = React.createRef();
-    const dispatch = useDispatch(); 
-    function handleSubmit() 
-    {
+   const [Email, setEmail] = useState('');
+   const recaptchaRef = React.createRef();
+   const dispatch = useDispatch();
+   const [value, setValue] = useState("[empty]");
+   const [expired, setExpired] = useState("false");
+   const handleSubmit = (event) => {
+        event.preventDefault();
         //const recaptchaValue = recaptchaRef.current.getValue();
         //this.props.onSubmit(recaptchaValue);
-        dispatch(sendMail(Email, "Reset Password", "Please enter this URL to change password: "));
-    }
-    
+		if(ValidateEmail(Email) &&value != "[empty]"){
+			 dispatch(sendMail(Email, "Reset Password", "Please enter this URL to change password: "));
+		}
+		else {
+            alert("You have to verify the Recaptcha !");
+            return (false);
+    	}
+   }
+   
+    function ValidateEmail(mail) 
+    {
+        if (/^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/.test(mail))
+            return true;
+        else if (/^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+(?:\.[a-zA-Z0-9-]+)$/.test(mail))
+            return true;
+		alert("You have entered an invalid email address!");
+		return false;
+	}
+	
     function onChange(value) 
     {
         console.log("Captcha value:", value);
+		setValue(value);
+        if(value == null) setExpired(true);
     }
+	
 
     return (   
         <div>
@@ -48,5 +69,6 @@ function ForgotPasswordComponent(props)
             </div>
         </div> 
     );
+	
 }
 export default ForgotPasswordComponent;

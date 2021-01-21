@@ -22,7 +22,7 @@ function ProfileNavComp(props)
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">My Profile</Dropdown.Item>
+                    <Dropdown.Item href="/profile">My Profile</Dropdown.Item>
                     <Dropdown.Item href="/" onClick={()=>{dispatch(signout());}}>Logout</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
