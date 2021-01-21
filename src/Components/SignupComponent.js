@@ -23,7 +23,7 @@ function SignUpComponent(props)
     const handleSubmit = (event) => {
         event.preventDefault();
         if(ValidateEmail(Email) && checkPwd(password) && checkNames(Firstname) && checkNames(Lastname)){ 
-			//if(value != "[empty]"){
+			if(value != "[empty]"){
             	if(password === password1){
                 	dispatch(signup(Email, password, Firstname, Lastname));
 				}
@@ -31,7 +31,7 @@ function SignUpComponent(props)
                 	alert("The passwords do not match");
                 	return (false);
             	}
-        	//}
+        	}
 		}
         else {
             alert("You have to verify the Recaptcha !");
