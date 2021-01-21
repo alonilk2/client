@@ -39,7 +39,7 @@ body
     color: #0f0761;
 }
 
-#Firstname, #Lastname, #email, #password, #password1 
+#Firstname, #Lastname, #email, #password2, #password3 
 {
     height: 6%;
 	margin: 5px 0% 5px 0%;

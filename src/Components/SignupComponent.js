@@ -32,12 +32,13 @@ function SignUpComponent(props)
                 	return (false);
             	}
         	}
-		}
-        else {
-            alert("You have to verify the Recaptcha !");
-            return (false);
-        } 
+			else {
+            	alert("You have to verify the Recaptcha !");
+            	return (false);
+        	} 
+		} 
 	}
+	
     function ValidateEmail(mail) 
     {
         if (/^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/.test(mail))
@@ -118,11 +119,11 @@ function SignUpComponent(props)
                             <div className="invalid-feedback">
                                 Please choose a email.
                             </div>
-                            <input id="password" type="password" className="form-control fix-rounded-right" required onChange={(e)=>setPassword(e.target.value)} placeholder="Enter Password" aria-label="password:" aria-describedby="basic-addon2"></input>
+                            <input id="password2" type="password" className="form-control fix-rounded-right" required onChange={(e)=>setPassword(e.target.value)} placeholder="Enter Password" aria-label="password:" aria-describedby="basic-addon2"></input>
                             <div className="invalid-feedback">
                                 Please enter your password.
                             </div>
-                            <input id="password1" type="password" className="form-control fix-rounded-right" required onChange={(e)=>setPassword1(e.target.value)} placeholder="ReEnter Password" aria-label="password:" aria-describedby="basic-addon2"></input>
+                            <input id="password3" type="password" className="form-control fix-rounded-right" required onChange={(e)=>setPassword1(e.target.value)} placeholder="ReEnter Password" aria-label="password:" aria-describedby="basic-addon2"></input>
                             <div className="invalid-feedback">
                                 Please enter your password.
                             </div>
