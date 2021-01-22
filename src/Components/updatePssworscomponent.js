@@ -32,7 +32,6 @@ function UpdatePasswordComponent(props)
            alert("No num");
 	   else if (str.search(/[a-zA-Z]/) == -1) 
            alert("no chars");
-
 	return ("ok");
 	}
 	

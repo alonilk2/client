@@ -1,10 +1,11 @@
 import Axios from 'axios';
 import Cookie from 'js-cookie';
 import { USER_SIGNIN_ATTEMPT, USER_SIGNIN_SUCCESS, USER_SIGNIN_FAILED,
-        USER_SIGNUP_ATTEMPT, USER_SIGNUP_SUCCESS, USER_SIGNUP_FAILED,
-        USER_SIGNOUT_SUCCESS} from '../Constants/userConst';
+         USER_SIGNUP_ATTEMPT, USER_SIGNUP_SUCCESS, USER_SIGNUP_FAILED,
+         USER_SIGNOUT_SUCCESS} from '../Constants/userConst';
 import { Redirect, Route } from "react-router";
 import { history } from '../history';
+
 function signin(email, password) {
     return dispatch => {
         dispatch({type: USER_SIGNIN_ATTEMPT, payload: {}});
@@ -31,7 +32,6 @@ function signin(email, password) {
     };
 
 }
-
 
 const signup = (email, password, firstname, lastname) => async (dispatch) => {
     dispatch({type: USER_SIGNUP_ATTEMPT, payload: {}});
@@ -91,10 +91,28 @@ const updatePass = (email, oldpass, newpass) => async (dispatch) => {
     }
 }
 
+const updateDet = (email, first_name, last_name, phonenumber, country, city) => async (dispatch) => {
+    try{
+        const response = await Axios.post("https://techstar12.herokuapp.com/updatePass",{
+            "email": email,
+            "first_name": first_name,
+            "last_name": last_name,
+            "phonenumber": phonenumber,
+            "country": country,
+            "city": city
+        });
+        if(response.data.error){
+            console.log(response.data.status);
+        }
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
 const signout = () => (dispatch) => {
     Cookie.remove('userInstance');
     dispatch({type: USER_SIGNOUT_SUCCESS});
 }
 
-
-export {signin, signup, signout, sendMail, updatePass};
+export {signin, signup, signout, sendMail, updatePass, updateDet};

@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import '../css/ProfileMain.css';
 import cookie from 'js-cookie';
 import {updatePass} from '../Actions/authActions'
+import {updateDet} from '../Actions/authActions'
 
 function ProfileComponent(props) 
 {
@@ -11,7 +12,14 @@ function ProfileComponent(props)
     const [oldpass, setOldpass] = useState('');
     const [newpass, setNewpass] = useState('');
     const [newpass1, setNewpass1] = useState('');
+    const [first_name, setfirst_name] = useState('');
+    const [last_name, setlast_name] = useState('');
+    const [phonenumber, setphonenumber] = useState('');
+    const [email, setemail] = useState('');
+    const [country, setcountry] = useState('');
+    const [city, setcity] = useState('');
     const dispatch = useDispatch();
+    const dispatch2 = useDispatch();
 
     if(userInstance){
         const user = JSON.parse(userInstance)
@@ -21,13 +29,14 @@ function ProfileComponent(props)
             else alert("Both passwords should be identical.");
         }
         
+        const onClickUp = () => {
+            dispatch2(updateDet(user.data.user.email, first_name, last_name, phonenumber, country, city))
+        }
+        
         return (   
             <div>
                 <div id="main-section">
                     <h1>My Profile</h1>
-                    <div className="upDetails">
-                        <a href="/">Edit yous details on</a>
-                    </div>
                     <div className="content-section">
                         <div className="row">
                             <p className="col subtitle"> First name: </p>
@@ -35,9 +44,9 @@ function ProfileComponent(props)
                             <p className="col subtitle"> Country: </p>
                         </div>
                         <div className="row">
-                            <p className="col subtitle"> {user.data.user.first_name} </p>
-                            <p className="col subtitle"> {user.data.user.phonenumber ? user.data.user.phonenumber : "-------"}</p>
-                            <p className="col subtitle"> {user.data.user.country ? user.data.user.country : "-------"}</p>
+                            <input id="first_name" type="text" onChange={(e) => setfirst_name(e.target.value)} className="form-control fix-rounded-right" required placeholder={user.data.user.first_name}></input>
+                            <input id="phonenumber" type="text" onChange={(e) => setphonenumber(e.target.value)} className="form-control fix-rounded-right" required placeholder={user.data.user.phonenumber ? user.data.user.phonenumber : "-------"}></input>
+                            <input id="country" type="text" onChange={(e) => setcountry(e.target.value)} className="form-control fix-rounded-right" required placeholder={user.data.user.country ? user.data.user.country : "-------"}></input>
                         </div>
                         <div className="row">
                             <p className="col subtitle"> Last name: </p>
@@ -45,13 +54,14 @@ function ProfileComponent(props)
                             <p className="col subtitle"> City: </p>
                         </div>
                         <div className="row">
-                            <p className="col subtitle"> {user.data.user.last_name}</p>
-                            <p className="col subtitle"> {user.data.user.email}</p>
-                            <p className="col subtitle"> {user.data.user.city ? user.data.user.city : "-------"}</p>
+                            <input id="last_name" type="text" onChange={(e) => setlast_name(e.target.value)} className="form-control fix-rounded-right" required placeholder={user.data.user.last_name}></input>
+                            <input id="email" type="text" onChange={(e) => setemail(e.target.value)} className="form-control fix-rounded-right" required placeholder={user.data.user.email}></input>
+                            <input id="city" type="text" onChange={(e) => setcity(e.target.value)} className="form-control fix-rounded-right" required placeholder={user.data.user.city ? user.data.user.city : "-------"}></input>
                         </div>
+                    <button type="submit" onClick={onClickUp}>Edit yous details</button>
                     </div>
 					<h2>Update Password</h2>
-                   <div className="updatepass-section">
+                    <div className="updatepass-section">
                         <div className="col">
 							<input id="password0" type="password" onChange={(e) => setOldpass(e.target.value)} className="form-control fix-rounded-right" required placeholder="Enter Old Password" aria-label="password:" aria-describedby="basic-addon2"></input>
 							<div className="invalid-feedback">
@@ -73,7 +83,7 @@ function ProfileComponent(props)
 						</div>
 					</div>	
                     <div className="row">
-    				    <button className="Signup-btn" type="submit">Update Password</button>
+    				    <button type="submit">Update Password</button>
                     </div>
                 </div>
             </div> 

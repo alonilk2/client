@@ -6,18 +6,6 @@ body
     display: block;
 }
 
-#ProfileContainer col-xs-6 col-md-4
-{
-    display: flex;
-    font-family: Calibri;
-    width: auto;
-    height: auto;
-    margin: auto;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10%;
-}
-
 #password0, #password, #password1 
 {
 	height: auto;
@@ -28,6 +16,16 @@ body
     margin: 3% 0% 3% 0%;
 }
 
+#first_name, #last_name, #phonenumber, #email, #country, #city 
+{
+	height: auto;
+    width: auto;
+	border-radius: 25px;
+	display: flex;
+	justify-content: center;
+    margin: 0% 8% 2% 8%;
+}
+
 #main-section 
 {
     text-align: center;
@@ -35,18 +33,19 @@ body
     width: auto;
     background-color: white;
     padding: 25px;
-    margin: 10vh 10vw 10vw 10vw;
+    margin: 10vh 5vw 10vw 5vw;
     box-shadow: 0px 0px 10px 0px #000;
     border-radius: 25px;
     overflow: auto;
     display: flex;
     flex-direction: column;
+    font-family: Calibri;
 }
 
 .content-section 
 {
     float: left;
-    width: 100%;
+    width: auto;
     margin: 0% 0% 3% 0%;
 }
 
@@ -56,15 +55,8 @@ body
     display: flex;
 	justify-content: center;
     width: auto;
-	margin: 3% 16% 0% 16%;
+	margin: 1% 27% 0% 27%;
     text-align: left;
-}
-
-.upDetails
-{
-    float: right;
-    text-align: right;
-    margin: 0% 4% 0% 0%;
 }
 
 button 
@@ -77,7 +69,7 @@ button
     border: none;
     cursor: pointer;
     font-family: Calibri;
-    width: 70%;
+    width: 100%;
     margin: auto;
     border-radius: 25px;
 }
