@@ -16,7 +16,7 @@ body
     margin: 3% 0% 3% 0%;
 }
 
-#first_name, #last_name, #phonenumber, #email, #country, #city 
+#first_name, #last_name, #phonenumber, #email1, #country, #city 
 {
 	height: auto;
     width: auto;
