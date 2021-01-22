@@ -30,6 +30,7 @@ function SignUpComponent(props)
             	if(password === password1)
                 {
                 	dispatch(signup(Email, password, Firstname, Lastname));
+                    alert("We sent you an email about your sign-up");
 				}
             	else 
                 {
@@ -39,7 +40,7 @@ function SignUpComponent(props)
         	}
 			else 
             {
-            	alert("You have to verify the Recaptcha !");
+            	alert("You have to verify the Recaptcha!");
             	return (false);
         	} 
 		} 

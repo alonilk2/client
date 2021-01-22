@@ -16,10 +16,11 @@ function ForgotPasswordComponent(props)
         //const recaptchaValue = recaptchaRef.current.getValue();
         //this.props.onSubmit(recaptchaValue);
 		if(ValidateEmail(Email) &&value != "[empty]"){
-			 dispatch(sendMail(Email, "Reset Password", "Please enter this URL to change password: "));
+			 dispatch(sendMail(Email, "Reset Password", "Please enter this URL to change password: https://techstar12.herokuapp.com/updatepass"));
+            alert("We sent you an email to update your password");
 		}
 		else {
-            alert("You have to verify the Recaptcha !");
+            alert("You have to verify the Recaptcha!");
             return (false);
     	}
    }
