@@ -55,7 +55,7 @@ function ProfileComponent(props)
                         </div>
                         <div className="row">
                             <input id="last_name" type="text" onChange={(e) => setlast_name(e.target.value)} className="form-control fix-rounded-right" required placeholder={user.data.user.last_name}></input>
-                            <input id="email" type="text" onChange={(e) => setemail(e.target.value)} className="form-control fix-rounded-right" required placeholder={user.data.user.email}></input>
+                            <input id="email1" type="text" onChange={(e) => setemail(e.target.value)} className="form-control fix-rounded-right" required placeholder={user.data.user.email}></input>
                             <input id="city" type="text" onChange={(e) => setcity(e.target.value)} className="form-control fix-rounded-right" required placeholder={user.data.user.city ? user.data.user.city : "-------"}></input>
                         </div>
                     <button type="submit" onClick={onClickUp}>Edit yous details</button>

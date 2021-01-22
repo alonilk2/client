@@ -17,7 +17,7 @@ function ForgotPasswordComponent(props)
         //this.props.onSubmit(recaptchaValue);
 		if(ValidateEmail(Email) &&value != "[empty]"){
 			 dispatch(sendMail(Email, "Reset Password", "Please enter this URL to change password: https://techstar12.herokuapp.com/updatepass"));
-            alert("We sent you an email to update your password");
+            //("We sent you an email to update your password");
 		}
 		else {
             alert("You have to verify the Recaptcha!");
