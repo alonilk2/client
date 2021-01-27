@@ -15,7 +15,7 @@ function ForgotPasswordComponent(props)
         event.preventDefault();
 		if(ValidateEmail(Email) &&value != "[empty]"){
 			 dispatch(sendMail(Email, "Reset Password", "Please enter this URL to change password: https://techstar12.herokuapp.com/updatepass"));
-            //("We sent you an email to update your password");
+            alert("We sent you an email to update your password");
 		}
 		else {
             alert("You have to verify the Recaptcha!");

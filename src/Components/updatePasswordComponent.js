@@ -17,7 +17,7 @@ function UpdatePasswordComponent(props)
 		
         if (conf == pass) 
         {
-            //("We sent you an email about this update");
+            alert("We sent you an email about this update");
             return (true)
         }
 		alert("The passwords do not match");

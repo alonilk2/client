@@ -83,9 +83,9 @@ const updatePass = (email, oldpass, newpass) => async (dispatch) => {
             "newpass": newpass
         });
         if(response.data.success === true){
-            alert("Password has been changed successfully, please re-login.");
             dispatch(signout());
             history.push('/');  
+            alert("Password has been changed successfully, please re-login.");
         }
         else {
             alert("The old password you have entered is wrong. Password hasn't changed");

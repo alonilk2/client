@@ -65,9 +65,9 @@ function ProfileComponent(props)
                     <button type="submit" onClick={onClickUp}>Update Detailes</button>
                     </div>
 					<h2>Update Password</h2>
-                    <form onSubmit={onClickUpdate}>
+                    <div>
                         <div className="updatepass-section">
-                            <div className="col">
+                            <div className="col pass-col">
                                 <input id="password0" type="password" onChange={(e) => setOldpass(e.target.value)} className="form-control fix-rounded-right" required placeholder="Enter Old Password" aria-label="password:" aria-describedby="basic-addon2"></input>
                                 <div className="invalid-feedback">
                                     Please enter your password.
@@ -81,16 +81,16 @@ function ProfileComponent(props)
                                     Please enter your password.
                                 </div>
                             </div>
-                            <div className="col">
+                            <div className="col pass-col">
                                 <p>* Both Password must match</p>
                                 <p>* The password must contain at least one number</p>
                                 <p>* The password must contain at least 6 characters</p>
                             </div>
                         </div>	
                         <div className="row">
-                            <button type="submit">Update Password</button>
+                            <button type="submit" onClick={onClickUpdate}>Update Password</button>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div> 
         );

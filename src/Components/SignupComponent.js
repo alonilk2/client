@@ -30,7 +30,7 @@ function SignUpComponent(props)
             	if(password === password1)
                 {
                 	dispatch(signup(Email, password, Firstname, Lastname));
-                    //("We sent you an email about your sign-up");
+                    alert("We sent you an email about your sign-up");
 				}
             	else 
                 {

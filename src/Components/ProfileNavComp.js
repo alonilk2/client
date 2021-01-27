@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import history from '../history';
+import { history } from '../history';
 import {useDispatch, useSelector} from 'react-redux';
 import '../css/Profile.css'
 import avatar from  '../images/avatar.png';
 import cookie from 'js-cookie';
 import {signout} from '../Actions/authActions';
 import Dropdown from 'react-bootstrap/Dropdown';
-
+import Button from 'react-bootstrap/Button';
 function ProfileNavComp(props) 
 {
     const userInstance = cookie.get('userInstance');
@@ -14,18 +14,26 @@ function ProfileNavComp(props)
     if(userInstance) {
         const user = JSON.parse(userInstance);
         console.log(user);
-        return (   
-            <Dropdown className="user-instance">
-                <img className="avatar" src={avatar} alt="profile picture"></img>
-                <Dropdown.Toggle id="dropdown-basic">
-                    Hello {user.data.user.first_name}
-                </Dropdown.Toggle>
+        function onClickPc(){
+            history.push('/Constraction');
+        } 
 
-                <Dropdown.Menu>
-                    <Dropdown.Item href="/profile">My Profile</Dropdown.Item>
-                    <Dropdown.Item href="/" onClick={()=>{dispatch(signout());}}>Logout</Dropdown.Item>
-                </Dropdown.Menu>
-            </Dropdown>
+        return (   
+            <div className="newDiv">
+                <Button className="btn" variant="primary" onClick={onClickPc}>Buy PC</Button>
+                <Button className="btn" variant="primary" onClick={onClickPc}>Buy Cellphone</Button>
+                <img className="avatar" src={avatar} alt="profile picture"></img>
+                <Dropdown className="user-instance">
+                    <Dropdown.Toggle id="dropdown-basic">
+                        Hello {user.data.user.first_name}
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <Dropdown.Item href="/profile">My Profile</Dropdown.Item>
+                        <Dropdown.Item href="/" onClick={()=>{dispatch(signout());}}>Logout</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+            </div>
 
         );
     }

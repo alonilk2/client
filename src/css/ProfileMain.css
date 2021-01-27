@@ -8,12 +8,12 @@ body
 
 #password0, #password, #password1 
 {
-	height: auto;
-    width: auto;
-	border-radius: 25px;
-	display: flex;
-	justify-content: center;
-    margin: 3% 0% 3% 0%;
+    height: auto;
+    width: 25vw;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    margin: 3% 0;
 }
 
 #first_name, #last_name, #phonenumber, #email1, #country, #city 
@@ -59,7 +59,6 @@ body
     display: flex;
 	justify-content: center;
     width: auto;
-	margin: 1% 27% 0% 27%;
     text-align: left;
 }
 
@@ -76,4 +75,16 @@ button
     width: 100%;
     margin: auto;
     border-radius: 25px;
+}
+
+
+.pass-col {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+    align-items: center;
 }
