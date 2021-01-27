@@ -53,7 +53,7 @@ button
     border-radius: 25px;
 }
 
-#email, #pass 
+#email-signin, #pass-signin
 {
 	height: 50px;
 	margin: 5% 0% 5% 0%;

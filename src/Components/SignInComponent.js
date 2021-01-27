@@ -19,7 +19,7 @@ function SignInComponent(props)
     
     const handleSubmit = (event) => {
         event.preventDefault();
-        if(ValidateEmail(Email) && checkPwd(password) && value != "[empty]"){
+        if(ValidateEmail(Email) && checkPwd(password) /*&& value != "[empty]"*/){
         dispatch(signin(Email, password));
         }
         else {
@@ -79,7 +79,7 @@ function SignInComponent(props)
                             } 
                             <p id="title">Sign In To Your Account</p>
                             <div className="email-field">
-                                <input id="email" type="text" className="form-control fix-rounded-right" required 
+                                <input id="email-signin" type="text" className="form-control fix-rounded-right" required 
                                     onChange = {(e) => setEmail(e.target.value)}
                                     placeholder="user name or email" aria-label="user name or email" aria-describedby="basic-addon1">
                                 </input>
@@ -88,7 +88,7 @@ function SignInComponent(props)
                                 </div>
                             </div>
                             <div className="password-field">
-                                <input id="pass" type="password" className="form-control fix-rounded-right" required placeholder="password:" aria-label="password:"
+                                <input id="pass-signin" type="password" className="form-control fix-rounded-right" required placeholder="password:" aria-label="password:"
                                     onChange={(e) => setPassword(e.target.value)}
                                     aria-describedby="basic-addon2">
                                 </input>

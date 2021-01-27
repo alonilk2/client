@@ -82,8 +82,13 @@ const updatePass = (email, oldpass, newpass) => async (dispatch) => {
             "oldpass": oldpass,
             "newpass": newpass
         });
-        if(response.data.error){
-            console.log(response.data.status);
+        if(response.data.success === true){
+            alert("Password has been changed successfully, please re-login.");
+            dispatch(signout());
+            history.push('/');  
+        }
+        else {
+            alert("The old password you have entered is wrong. Password hasn't changed");
         }
     }
     catch (err) {
@@ -93,7 +98,7 @@ const updatePass = (email, oldpass, newpass) => async (dispatch) => {
 
 const updateDet = (email, first_name, last_name, phonenumber, country, city) => async (dispatch) => {
     try{
-        const response = await Axios.post("https://techstar12.herokuapp.com/updatePass",{
+        const response = await Axios.post("https://techstar12.herokuapp.com/updateDet",{
             "email": email,
             "first_name": first_name,
             "last_name": last_name,
@@ -101,9 +106,12 @@ const updateDet = (email, first_name, last_name, phonenumber, country, city) => 
             "country": country,
             "city": city
         });
-        if(response.data.error){
-            console.log(response.data.status);
+        if(response.data.success == true){
+            alert("Detailes updated successfully!");
+            //dispatch(signout());
+            //history.push('/');  
         }
+        else console.log(response.data.status);
     }
     catch (err) {
         console.log(err);

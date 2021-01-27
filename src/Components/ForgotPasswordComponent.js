@@ -13,8 +13,6 @@ function ForgotPasswordComponent(props)
    const [expired, setExpired] = useState("false");
    const handleSubmit = (event) => {
         event.preventDefault();
-        //const recaptchaValue = recaptchaRef.current.getValue();
-        //this.props.onSubmit(recaptchaValue);
 		if(ValidateEmail(Email) &&value != "[empty]"){
 			 dispatch(sendMail(Email, "Reset Password", "Please enter this URL to change password: https://techstar12.herokuapp.com/updatepass"));
             //("We sent you an email to update your password");

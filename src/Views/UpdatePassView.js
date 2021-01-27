@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import NavBar from '../Components/Navbar';
-import UpdatePasswordComponent from '../Components/updatePssworscomponent';
+import UpdatePasswordComponent from '../Components/updatePasswordComponent';
 
 class UpdatePassView extends Component 
 {
