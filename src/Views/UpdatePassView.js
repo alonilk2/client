@@ -10,7 +10,7 @@ class UpdatePassView extends Component
 		return (
 			<div>
 				<NavBar />
-				<UpdatePasswordComponent />
+				<UpdatePasswordComponent userid={this.props.match.params.userid} token={this.props.match.params.token} />
 			</div>
 		)
 	}

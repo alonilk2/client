@@ -24,7 +24,7 @@ ReactDOM.render(
                     <Route exact path="/" component={App} />
                     <Route path="/SignIn" component={SignIn} />
                     <Route path="/SignUp" component={SignUp} />                    
-                    <Route path="/UpdatePass/:id/:token" component={UpdatePassView} />
+                    <Route path="/reset/:userid/:token" component={UpdatePassView} />
                     <Route path="/ForgotPass" component={ForgotPasswordView} />                    
                     <Route path="/About" component={AboutView} />
                     <Route path="/Constraction" component={ConstractionView} />

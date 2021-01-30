@@ -2,26 +2,20 @@ import React, {useEffect, useState} from 'react';
 import history from '../history';
 import {useDispatch, useSelector} from 'react-redux';
 import '../css/Update.css'
-
+import {updatePassForgot} from '../Actions/authActions';
 function UpdatePasswordComponent(props) 
 {
-    const [Email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-	
+    const [password1, setPassword1] = useState('');
+    const dispatch = useDispatch();
+
     function onClickUpdate() 
     {
-        let pass = document.getElementById("password").value;
-        let conf = document.getElementById("password1").value;
-        
-        checkPwd(pass);
-		
-        if (conf == pass) 
-        {
-            alert("We sent you an email about this update");
-            return (true)
+        if(checkPwd(password)) {
+            if(password === password1)
+                dispatch(updatePassForgot(props.userid, props.token, password))
+            else alert("The passwords do not match");
         }
-		alert("The passwords do not match");
-		return (false)
     }
 	
     function checkPwd(str) 
@@ -32,7 +26,7 @@ function UpdatePasswordComponent(props)
            alert("No num");
 	   else if (str.search(/[a-zA-Z]/) == -1) 
            alert("no chars");
-	return ("ok");
+	    return true;
 	}
 	
     return (   
@@ -40,20 +34,20 @@ function UpdatePasswordComponent(props)
             <div id="UpdatePasswordcontainer">
                 <div className= "row justify-content-center">
                     <div id="UpdatePassword">
-                        <form className="UpdatePasswordForm" action="#" method="post" autocomplete="off">
+                        <div>
                             <p id="title">Update Password</p>
-                            <input id="pass1" type="password" className="form-control fix-rounded-right" required placeholder="Enter Password" aria-label="password:" aria-describedby="basic-addon2"></input>
+                            <input id="pass1" type="password" onChange={(e)=>setPassword(e.target.value)} className="form-control fix-rounded-right" required placeholder="Enter Password" aria-label="password:" aria-describedby="basic-addon2"></input>
                             <div className="invalid-feedback">
                                 Please enter your password.
                             </div>
-                            <input id="pass2" type="password" className="form-control fix-rounded-right" required placeholder="Re-enter Password" aria-label="password:" aria-describedby="basic-addon2"></input>
+                            <input id="pass2" type="password" onChange={(e)=>setPassword1(e.target.value)} className="form-control fix-rounded-right" required placeholder="Re-enter Password" aria-label="password:" aria-describedby="basic-addon2"></input>
                             <div className="invalid-feedback">
                                 Please enter your password.
                             </div>
                             <div className="row">
-                                <button className="Signup-btn" type="submit" onClick={onClickUpdate}>Update Password</button>
+                                <button className="Signup-btn" onClick={onClickUpdate}>Update Password</button>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>

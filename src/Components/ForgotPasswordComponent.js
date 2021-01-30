@@ -3,7 +3,7 @@ import history from '../history';
 import {useDispatch, useSelector} from 'react-redux';
 import '../css/Forgot.css';
 import ReCAPTCHA from "react-google-recaptcha";
-import {sendMail} from '../Actions/authActions';
+import {forgotPass} from '../Actions/authActions';
 function ForgotPasswordComponent(props) 
 {
    const [Email, setEmail] = useState('');
@@ -13,9 +13,8 @@ function ForgotPasswordComponent(props)
    const [expired, setExpired] = useState("false");
    const handleSubmit = (event) => {
         event.preventDefault();
-		if(ValidateEmail(Email) &&value != "[empty]"){
-			 dispatch(sendMail(Email, "Reset Password", "Please enter this URL to change password: https://techstar12.herokuapp.com/updatepass"));
-            alert("We sent you an email to update your password");
+		if(ValidateEmail(Email) && value != "[empty]"){
+            dispatch(forgotPass(Email));
 		}
 		else {
             alert("You have to verify the Recaptcha!");

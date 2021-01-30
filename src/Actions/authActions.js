@@ -59,15 +59,17 @@ const signup = (email, password, firstname, lastname) => async (dispatch) => {
     }
 }
 
-const sendMail = (email, subject, text) => async (dispatch) => {
+const forgotPass = (email) => async (dispatch) => {
     try{
-        const response = await Axios.post("https://techstar12.herokuapp.com/sendMail",{
-            "email": email,
-            "subject": subject,
-            "text": text
+        const response = await Axios.post("https://techstar12.herokuapp.com/forgotPass",{
+            "email": email
         });
+        if(response.data.success === true){
+            alert("A recovery email has been sent to the email you specified. Please visit your Email box and follow the instructions.");
+        }
         if(response.data.error){
-            console.log(response.data.status);
+            alert("This email is not recognized.");
+
         }
     }
     catch (err) {
@@ -90,6 +92,24 @@ const updatePass = (email, oldpass, newpass) => async (dispatch) => {
         else {
             alert("The old password you have entered is wrong. Password hasn't changed");
         }
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+const updatePassForgot = (userid, token, newpass) => async (dispatch) => {
+    try{
+        const response = await Axios.post("https://techstar12.herokuapp.com/storePassword",{
+            "userid": userid,
+            "token": token,
+            "newpass": newpass
+        });
+        if(response.data.success === true){
+            history.push('/');  
+            alert("Password has been changed successfully, please login.");
+        }
+        else alert("We encountered a problem.");
     }
     catch (err) {
         console.log(err);
@@ -123,4 +143,4 @@ const signout = () => (dispatch) => {
     dispatch({type: USER_SIGNOUT_SUCCESS});
 }
 
-export {signin, signup, signout, sendMail, updatePass, updateDet};
+export {signin, signup, signout, forgotPass, updatePass, updateDet, updatePassForgot};
