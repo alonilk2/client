@@ -19,8 +19,8 @@ function SignInComponent(props)
     
     const handleSubmit = (event) => {
         event.preventDefault();
-        if(ValidateEmail(Email) && checkPwd(password) && value != "[empty]"){
-        dispatch(signin(Email, password));
+        if(ValidateEmail(Email.toLowerCase()) && checkPwd(password) && value != "[empty]"){
+        dispatch(signin(Email.toLowerCase(), password));
         }
         else {
             alert("You have to verify the Recaptcha !");

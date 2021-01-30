@@ -23,13 +23,13 @@ function SignUpComponent(props)
     const handleSubmit = (event) => 
     {
         event.preventDefault();
-        if(ValidateEmail(Email) && checkPwd(password) && checkNames(Firstname) && checkNames(Lastname))
+        if(ValidateEmail(Email.toLowerCase()) && checkPwd(password) && checkNames(Firstname) && checkNames(Lastname))
         { 
 			if(value != "[empty]")
             {
             	if(password === password1)
                 {
-                	dispatch(signup(Email, password, Firstname, Lastname));
+                	dispatch(signup(Email.toLowerCase(), password, Firstname, Lastname));
                     alert("We sent you an email about your sign-up");
 				}
             	else 

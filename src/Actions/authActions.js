@@ -127,7 +127,7 @@ const updateDet = (email, first_name, last_name, phonenumber, country, city) => 
             "city": city
         });
         if(response.data.success == true){
-            alert("Detailes updated successfully!");
+            alert("Detailes updated successfully!\n You will be able to see all the updates in the next login!");
             //dispatch(signout());
             //history.push('/');  
         }

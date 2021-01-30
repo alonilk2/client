@@ -27,7 +27,15 @@ function ProfileComponent(props)
             else alert("Both passwords should be identical.");
         }
         const onClickUp = () => {
-            dispatch(updateDet(user.data.user.email, first_name, last_name, phonenumber, country, city))
+            if(user.data.user.country!==null && country==='')
+                alert("You can not delete information! ");
+            else if(user.data.user.phonenumber!==null && phonenumber==='')
+                alert("You can not delete information! ");
+            else if(user.data.user.city!==null && city==='')
+                alert("You can not delete information! ");
+            else if(email==='' || first_name==='' || last_name==='')
+                alert("You can not delete information! ");
+            else dispatch(updateDet(user.data.user.email, first_name, last_name, phonenumber, country, city))
         }
         return (   
             <div>
@@ -41,7 +49,7 @@ function ProfileComponent(props)
                             </div>
                             <div className="col input-column">
                                 <p className="input-column"> Phone: </p>
-                                <input id="phonenumber" type="text" onChange={(e) => setphonenumber(e.target.value)} className="form-control fix-rounded-right" required placeholder={user.data.user.phonenumber ? user.data.user.phonenumber : "-------"}></input>
+                                <input id="phonenumber" type="text" onChange={(e) => setphonenumber(e.target.value)} className="form-control fix-rounded-right" required placeholder={user.data.user.phonenumber ? user.data.user.phonenumber: "-------"}></input>
                             </div>
                             <div className="col input-column">
                                 <p className="input-column"> Country: </p>

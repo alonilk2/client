@@ -13,8 +13,8 @@ function ForgotPasswordComponent(props)
    const [expired, setExpired] = useState("false");
    const handleSubmit = (event) => {
         event.preventDefault();
-		if(ValidateEmail(Email) && value != "[empty]"){
-            dispatch(forgotPass(Email));
+		if(ValidateEmail(Email.toLowerCase()) && value != "[empty]"){
+            dispatch(forgotPass(Email.toLowerCase()));
 		}
 		else {
             alert("You have to verify the Recaptcha!");
