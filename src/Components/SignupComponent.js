@@ -139,7 +139,7 @@ function SignUpComponent(props)
                             </div>
                             <div className="row">
                                 <div className="need-acc-txt"> Have an account? <a href="/SignIn">Sign-In</a> 
-                            </div>
+                                </div>
                             </div> 
                             <ReCAPTCHA
                                 ref={recaptchaRef}

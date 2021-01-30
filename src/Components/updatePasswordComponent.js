@@ -3,19 +3,34 @@ import history from '../history';
 import {useDispatch, useSelector} from 'react-redux';
 import '../css/Update.css'
 import {updatePassForgot} from '../Actions/authActions';
+import ReCAPTCHA from "react-google-recaptcha";
+
 function UpdatePasswordComponent(props) 
 {
     const [password, setPassword] = useState('');
     const [password1, setPassword1] = useState('');
     const dispatch = useDispatch();
-
+    const recaptchaRef = React.createRef();
+    const [value, setValue] = useState("[empty]");
+    const [load, setLoad] = useState(false);
+    const [expired, setExpired] = useState("false");
+    
     function onClickUpdate() 
     {
-        if(checkPwd(password)) {
-            if(password === password1)
-                dispatch(updatePassForgot(props.userid, props.token, password))
-            else alert("The passwords do not match");
+        if(value != "[empty]")
+        {
+            if(checkPwd(password)) 
+            {
+                if(password === password1)
+                    dispatch(updatePassForgot(props.userid, props.token, password))
+                else alert("The passwords do not match");
+            }
         }
+        else 
+        {
+            alert("You have to verify the Recaptcha!");
+            return (false);
+        } 
     }
 	
     function checkPwd(str) 
@@ -29,6 +44,13 @@ function UpdatePasswordComponent(props)
 	    return true;
 	}
 	
+    function onChange(value) 
+    {
+        console.log("Captcha value:", value);
+        setValue(value);
+        if(value == null) setExpired(true);
+    }
+    
     return (   
         <div>
             <div id="UpdatePasswordcontainer">
@@ -47,6 +69,12 @@ function UpdatePasswordComponent(props)
                             <div className="row">
                                 <button className="Signup-btn" onClick={onClickUpdate}>Update Password</button>
                             </div>
+                            <ReCAPTCHA
+                                ref={recaptchaRef}
+                                sitekey="6Ldn5DEaAAAAALYRhCaGFStvoKGWXRUxuBJVNPrn"
+                                onChange={onChange} 
+                                id="my_captcha_form"
+                            />
                         </div>
                     </div>
                 </div>
