@@ -14,16 +14,17 @@ function signin(email, password) {
             password: password
         })
         .then(function(response) { 
-            if(response.data.success){
+            if(response.data.success === true){
                 dispatch({type: USER_SIGNIN_SUCCESS, payload: response});
                 Cookie.set('userInstance', JSON.stringify(response));
                 history.push('/');
             }
             else {
-                if(response.data.error === 0)
-                    dispatch({type: USER_SIGNIN_FAILED, payload: 0});
-                else if(response.data.error === 1)
+                dispatch({type: USER_SIGNIN_FAILED, payload: 0});
+                if(response.data.error === 1){
                     dispatch({type: USER_SIGNIN_FAILED, payload: 1});
+                    alert("Your account is still disabled. You need to activate it using the URL we sent to your Email.");
+                }
             }
         })
         .catch(function(error) {
@@ -44,7 +45,6 @@ const signup = (email, password, firstname, lastname) => async (dispatch) => {
         });
         if(user.data.success){
             dispatch({type: USER_SIGNUP_SUCCESS, payload: user});
-            Cookie.set('userInstance', JSON.stringify(user));
             history.push('/');
         }
         else {
@@ -67,9 +67,8 @@ const forgotPass = (email) => async (dispatch) => {
         if(response.data.success === true){
             alert("A recovery email has been sent to the email you specified. Please visit your Email box and follow the instructions.");
         }
-        if(response.data.error){
+        else {
             alert("This email is not recognized.");
-
         }
     }
     catch (err) {
@@ -92,6 +91,43 @@ const updatePass = (email, oldpass, newpass) => async (dispatch) => {
         else {
             alert("The old password you have entered is wrong. Password hasn't changed");
         }
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+const updateEmail = (oldemail, newemail) => async (dispatch) => {
+    try{
+        const response = await Axios.post("https://techstar12.herokuapp.com/updateEmail",{
+            "email": oldemail,
+            "newemail": newemail,
+        });
+        if(response.data.success === true){
+            dispatch(signout());
+            history.push('/');  
+            alert("An email has been sent to the original email you had. Please visit your Email box and follow the instructions to approve the change.");
+        }
+        else {
+            alert("We encountered a problem.");
+        }
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+const approveUser = (userid, token) => async (dispatch) => {
+    try{
+        const response = await Axios.post("https://techstar12.herokuapp.com/approve_user",{
+            "userid": userid,
+            "token": token,
+        });
+        if(response.data.success === true){
+            history.push('/');  
+            alert("Your account has been activated successfully. Please login.");
+        }
+        else alert("We encountered a problem.");
     }
     catch (err) {
         console.log(err);
@@ -143,4 +179,4 @@ const signout = () => (dispatch) => {
     dispatch({type: USER_SIGNOUT_SUCCESS});
 }
 
-export {signin, signup, signout, forgotPass, updatePass, updateDet, updatePassForgot};
+export {signin, signup, signout, forgotPass, updatePass, updateDet, updatePassForgot, approveUser, updateEmail};

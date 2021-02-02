@@ -58,11 +58,11 @@ function UpdatePasswordComponent(props)
                     <div id="UpdatePassword">
                         <div>
                             <p id="title">Update Password</p>
-                            <input id="pass1" type="password" onChange={(e)=>setPassword(e.target.value)} className="form-control fix-rounded-right" required placeholder="Enter Password" aria-label="password:" aria-describedby="basic-addon2"></input>
+                            <input id="passu" type="password" onChange={(e)=>setPassword(e.target.value)} className="form-control fix-rounded-right" required placeholder="Enter Password" aria-label="password:" aria-describedby="basic-addon2"></input>
                             <div className="invalid-feedback">
                                 Please enter your password.
                             </div>
-                            <input id="pass2" type="password" onChange={(e)=>setPassword1(e.target.value)} className="form-control fix-rounded-right" required placeholder="Re-enter Password" aria-label="password:" aria-describedby="basic-addon2"></input>
+                            <input id="passu2" type="password" onChange={(e)=>setPassword1(e.target.value)} className="form-control fix-rounded-right" required placeholder="Re-enter Password" aria-label="password:" aria-describedby="basic-addon2"></input>
                             <div className="invalid-feedback">
                                 Please enter your password.
                             </div>

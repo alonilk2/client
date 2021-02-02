@@ -3,8 +3,8 @@ import history from '../history';
 import {useDispatch, useSelector} from 'react-redux';
 import '../css/ProfileMain.css';
 import cookie from 'js-cookie';
-import {updatePass} from '../Actions/authActions'
-import {updateDet} from '../Actions/authActions'
+import {updatePass, updateEmail, updateDet} from '../Actions/authActions'
+
 
 function ProfileComponent(props) 
 {
@@ -21,6 +21,11 @@ function ProfileComponent(props)
     const [city, setcity] = useState(user.data.user.city);
     const dispatch = useDispatch();
     if(userInstance){
+        const onClickUpdateEmail = () => {
+            if(newpass === newpass1)
+                dispatch(updateEmail(user.data.user.email, email))
+            else alert("Both passwords should be identical.");
+        }
         const onClickUpdate = () => {
             if(newpass === newpass1)
                 dispatch(updatePass(user.data.user.email, oldpass, newpass))
@@ -62,15 +67,19 @@ function ProfileComponent(props)
                                 <input id="last_name" type="text" onChange={(e) => setlast_name(e.target.value)} className="form-control fix-rounded-right" required placeholder={user.data.user.last_name}></input>
                             </div>
                             <div className="col input-column">
-                                <p className="input-column"> Email: </p>
-                                <input id="email1" type="text" onChange={(e) => setemail(e.target.value)} className="form-control fix-rounded-right" required placeholder={user.data.user.email}></input>
-                            </div>
-                            <div className="col input-column">
                                 <p className="input-column"> City: </p>
                                 <input id="city" type="text" onChange={(e) => setcity(e.target.value)} className="form-control fix-rounded-right" required placeholder={user.data.user.city ? user.data.user.city : "-------"}></input>
                             </div>
                         </div>
-                    <button type="submit" onClick={onClickUp}>Update Detailes</button>
+                    <button type="submit" onClick={onClickUp}>Update Details</button>
+                    </div>
+                    <div className="email-section">
+					    <h2>Update Email</h2>
+                        <div className="row input-column">
+                            <p className="input-column"> Email: </p>
+                            <input id="email1" type="text" onChange={(e) => setemail(e.target.value)} className="form-control fix-rounded-right" required placeholder={user.data.user.email}></input>
+                            <button type="submit" onClick={onClickUpdateEmail}>Update Email</button>
+                        </div>
                     </div>
 					<h2>Update Password</h2>
                     <div>

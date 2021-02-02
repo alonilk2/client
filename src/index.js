@@ -15,6 +15,8 @@ import ConstractionView from './Views/ConstractionView';
 import fourView from './Views/fourView';
 import ProfileView from './Views/ProfileView';
 import {history} from './history';
+import ApproveView from './Views/ApproveView';
+import UpdateEmail from './Views/UpdateEmail';
 
 ReactDOM.render(
     <React.StrictMode>
@@ -25,6 +27,8 @@ ReactDOM.render(
                     <Route path="/SignIn" component={SignIn} />
                     <Route path="/SignUp" component={SignUp} />                    
                     <Route path="/reset/:userid/:token" component={UpdatePassView} />
+                    <Route path="/activate/:userid/:token" component={ApproveView} />
+                    <Route path="/updatemail/:userid/:token" component={UpdateEmail} />
                     <Route path="/ForgotPass" component={ForgotPasswordView} />                    
                     <Route path="/About" component={AboutView} />
                     <Route path="/Constraction" component={ConstractionView} />
