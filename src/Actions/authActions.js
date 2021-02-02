@@ -34,14 +34,15 @@ function signin(email, password) {
 
 }
 
-const signup = (email, password, firstname, lastname) => async (dispatch) => {
+const signup = (email, password, firstname, lastname, promo) => async (dispatch) => {
     dispatch({type: USER_SIGNUP_ATTEMPT, payload: {}});
     try{
         const user = await Axios.post("https://techstar12.herokuapp.com/signup",{
             "email": email,
             "password": password,
             "firstname": firstname,
-            "lastname": lastname
+            "lastname": lastname,
+            "promo": promo
         });
         if(user.data.success){
             dispatch({type: USER_SIGNUP_SUCCESS, payload: user});
@@ -52,6 +53,10 @@ const signup = (email, password, firstname, lastname) => async (dispatch) => {
                 dispatch({type: USER_SIGNUP_FAILED, payload: 0});
             else if(user.data.error === 1)
                 dispatch({type: USER_SIGNUP_FAILED, payload: 1});
+            else if(user.data.error === 3){
+                dispatch({type: USER_SIGNUP_FAILED, payload: 3});
+                alert("Bad PromoCode!");
+            }
         }
     }
     catch (err) {

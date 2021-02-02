@@ -20,17 +20,18 @@ function ProfileComponent(props)
     const [country, setcountry] = useState(user.data.user.country);
     const [city, setcity] = useState(user.data.user.city);
     const dispatch = useDispatch();
+
     if(userInstance){
         const onClickUpdateEmail = () => {
-            if(newpass === newpass1)
-                dispatch(updateEmail(user.data.user.email, email))
-            else alert("Both passwords should be identical.");
+            dispatch(updateEmail(user.data.user.email, email))
         }
+
         const onClickUpdate = () => {
             if(newpass === newpass1)
                 dispatch(updatePass(user.data.user.email, oldpass, newpass))
             else alert("Both passwords should be identical.");
         }
+
         const onClickUp = () => {
             if(user.data.user.country!==null && country==='')
                 alert("You can not delete information! ");
@@ -42,6 +43,7 @@ function ProfileComponent(props)
                 alert("You can not delete information! ");
             else dispatch(updateDet(user.data.user.email, first_name, last_name, phonenumber, country, city))
         }
+
         return (   
             <div>
                 <div id="main-section">
@@ -51,10 +53,6 @@ function ProfileComponent(props)
                             <div className="col input-column">
                                 <p className="subtitle"> First name: </p>
                                 <input id="first_name" type="text" onChange={(e) => setfirst_name(e.target.value)} className="form-control fix-rounded-right" required placeholder={user.data.user.first_name}></input>
-                            </div>
-                            <div className="col input-column">
-                                <p className="input-column"> Phone: </p>
-                                <input id="phonenumber" type="text" onChange={(e) => setphonenumber(e.target.value)} className="form-control fix-rounded-right" required placeholder={user.data.user.phonenumber ? user.data.user.phonenumber: "-------"}></input>
                             </div>
                             <div className="col input-column">
                                 <p className="input-column"> Country: </p>
@@ -69,6 +67,12 @@ function ProfileComponent(props)
                             <div className="col input-column">
                                 <p className="input-column"> City: </p>
                                 <input id="city" type="text" onChange={(e) => setcity(e.target.value)} className="form-control fix-rounded-right" required placeholder={user.data.user.city ? user.data.user.city : "-------"}></input>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col input-column">
+                                <p className="input-column"> Phone: </p>
+                                <input id="phonenumber" type="text" onChange={(e) => setphonenumber(e.target.value)} className="form-control fix-rounded-right" required placeholder={user.data.user.phonenumber ? user.data.user.phonenumber: "-------"}></input>
                             </div>
                         </div>
                     <button type="submit" onClick={onClickUp}>Update Details</button>

@@ -10,6 +10,7 @@ function SignUpComponent(props)
     const [Email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [password1, setPassword1] = useState('');
+    const [promo, setPromo] = useState('');
     const [Firstname, setFirstName] = useState('');
     const [Lastname, setLastName] = useState('');
     const [callback, setCallback] = useState("not fired");
@@ -29,7 +30,7 @@ function SignUpComponent(props)
             {
             	if(password === password1)
                 {
-                	dispatch(signup(Email.toLowerCase(), password, Firstname, Lastname));
+                	dispatch(signup(Email.toLowerCase(), password, Firstname, Lastname, promo));
                     alert("We sent you an email about your sign-up");
 				}
             	else 
@@ -99,7 +100,7 @@ function SignUpComponent(props)
         setValue(value);
         if(value == null) setExpired(true);
     }
-    
+
     return (   
         <div>
             <div id="SignUpcontainer">
@@ -134,6 +135,7 @@ function SignUpComponent(props)
                             <div className="invalid-feedback">
                                 Please enter your password.
                             </div>
+                            <input id="password3" type="text" className="form-control fix-rounded-right" onChange={(e)=>setPromo(e.target.value)} placeholder="Promocode (Optional)" aria-label="PromoCode: (Optional)" aria-describedby="basic-addon2"></input>
                             <div className="row">
                                 <button className="Signup-btn" type="submit">Signup</button>
                             </div>
